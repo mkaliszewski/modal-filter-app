@@ -1,0 +1,17 @@
+{
+    "env": {
+        "browser": true,
+        "node": true,
+        "jasmine": true
+    },
+    "extends": ["airbnb", "prettier", "prettier/react"],
+    "rules": {
+        "react/jsx-filename-extension": [
+            1,
+            {
+                "extensions": [".js", ".jsx"]
+            }
+        ],
+        "indent": ["error", 4]
+    }
+}
