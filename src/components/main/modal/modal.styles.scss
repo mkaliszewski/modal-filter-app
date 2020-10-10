@@ -1,0 +1,52 @@
+@import '../../../media.scss';
+
+.modal {
+    width: 260px;
+    height: 430px;
+    z-index: 99;
+    transition: width, height 0.2s ease;
+    position: absolute;
+    background-color: $backgroundColor;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-box-shadow: 0px 0px 16px 0px $boxShadowColor;
+    -moz-box-shadow: 0px 0px 16px 0px $boxShadowColor;
+    box-shadow: 0px 0px 16px 0px $boxShadowColor;
+
+    @include mediaQuery($mobile-sm) {
+        width: calc(0.647 * 100vw + 52.9px);
+        height: calc(0.513 * 100vw + 265.7px);
+    }
+
+    @include mediaQuery($tablet-sm) {
+        width: calc(0.113 * 100vw + 333.3px);
+        height: calc(0.139 * 100vw + 403.3px);
+    }
+
+    @include mediaQuery($screen-lg) {
+        width: 550px;
+        height: 670px;
+    }
+
+    .modal__multiselect {
+        margin-top: 5%;
+        height: 50%;
+    }
+
+    .modal__button-container {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        margin: 4vw;
+        transition: margin 0.2s ease;
+
+        @include mediaQuery($tablet-lg) {
+            margin: calc(-0.007 * 100vw + 6.1vw);
+        }
+
+        @include mediaQuery($tablet-lg) {
+            margin: 1vw;
+        }
+    }
+}

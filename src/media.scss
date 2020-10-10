@@ -1,0 +1,65 @@
+//media queries
+$mobile-sm: 320px;
+$mobile-md: 375px;
+$mobile-lg: 576px;
+
+$tablet-sm: 768px;
+$tablet-lg: 1024px;
+
+$screen-sm: 1200px;
+$screen-md: 1366px;
+$screen-md: 1668px;
+$screen-lg: 1920px;
+
+//media queries
+
+@mixin mediaQuery($screen) {
+    @media (min-width: $screen) {
+        @content;
+    }
+}
+
+@mixin customMediaQuery($screen) {
+    @media (min-width: $screen+'px') {
+        @content;
+    }
+}
+
+//flex
+
+@mixin flexBox($flexDir, $justifyContent, $alignItems) {
+    display: flex;
+    flex-direction: $flexDir;
+    justify-content: $justifyContent;
+    align-items: $alignItems;
+}
+
+//font-sizes
+$font_xs: 8px;
+$font_sm: 16px;
+$font_md: 24px;
+$font_md-custom: 28px;
+$font_lg: 32px;
+$font_xl: 48px;
+$font_xl-custom: 52px;
+$font_xxl: 64px;
+$font_xxxl: 95px;
+$font_heading_sm: 54px;
+$font_heading_lg: 124px;
+
+//colors
+$primaryOrangeColor: #ff6b01;
+$primaryBlueColor: #2f4858;
+$primaryGreyColor: #b8b8b8;
+$secondaryGreyColor: #c9c9c9;
+$thirdGreyColor: #e2e2e2;
+$backgroundColor: #fbfbfb;
+$boxShadowColor: #00000040;
+$defaultWhiteColor: #ffffff;
+$defaultBlackColor: #000000;
+$backdropBackgroundColor: #0000001a;
+
+//values
+
+$navbarWidth: 125px;
+//gradient & shadow

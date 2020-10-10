@@ -1,0 +1,11 @@
+@import '../../../media.scss';
+
+.icon {
+    font-size: 2em;
+    height: 50%;
+    color: $defaultWhiteColor;
+
+    @include mediaQuery($tablet-sm) {
+        font-size: 3em;
+    }
+}

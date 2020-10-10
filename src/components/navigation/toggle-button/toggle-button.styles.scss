@@ -1,0 +1,47 @@
+@import '../../../media.scss';
+
+$button-calc: calc(0.057 * 100vw + 21.76px);
+
+.togglebutton {
+    height: 40px;
+    @include flexBox(column, space-evenly, center);
+    background-color: transparent;
+    border: none;
+    padding-right: 1rem;
+    position: absolute;
+    top: 1vh;
+    left: 1vh;
+    z-index: 99;
+
+    @include mediaQuery($mobile-sm) {
+        height: $button-calc;
+    }
+
+    @include mediaQuery($tablet-sm) {
+        display: none;
+    }
+
+    @include mediaQuery($tablet-lg) {
+        height: 80px;
+    }
+
+    &:focus {
+        outline: none;
+    }
+
+    .line {
+        width: 40px;
+        height: 2px;
+        background-color: $primaryBlueColor;
+
+        @include mediaQuery($mobile-sm) {
+            width: $button-calc;
+            height: calc(0.006 * 100vw + 0.08px);
+        }
+
+        @include mediaQuery($tablet-lg) {
+            width: 80px;
+            height: 6px;
+        }
+    }
+}

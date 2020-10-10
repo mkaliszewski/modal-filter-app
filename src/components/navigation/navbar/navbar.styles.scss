@@ -1,0 +1,64 @@
+@import '../../../media.scss';
+
+.navbar {
+    height: 100vh;
+    width: 125px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateX(-120%);
+    background-color: $primaryBlueColor;
+    -webkit-box-shadow: 5px 0px 10px 0px $boxShadowColor;
+    -moz-box-shadow: 5px 0px 10px 0px $boxShadowColor;
+    box-shadow: 5px 0px 10px 0px $boxShadowColor;
+    transition: transform 0.5s ease;
+    z-index: 99;
+
+    &.navbar--open {
+        transform: translateX(0);
+    }
+
+    @include mediaQuery($tablet-sm) {
+        transform: translateX(0);
+    }
+
+    .navbar__list {
+        height: 70%;
+        @include flexBox(column, space-around, center);
+        list-style: none;
+        padding: 0 12px;
+
+        @include mediaQuery($tablet-sm) {
+            height: 60%;
+        }
+
+        .navbar__item {
+            width: 100%;
+            height: 100%;
+            @include flexBox(column, center, center);
+            color: $defaultWhiteColor;
+            cursor: pointer;
+
+            @include mediaQuery($tablet-sm) {
+                width: 100%;
+                height: 100%;
+            }
+
+            &:first-child {
+                .icon {
+                    color: $primaryOrangeColor;
+                }
+            }
+
+            &:hover {
+                .icon {
+                    color: $primaryOrangeColor;
+                }
+            }
+
+            &:focus {
+                outline: none;
+            }
+        }
+    }
+}

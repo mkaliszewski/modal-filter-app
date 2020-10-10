@@ -1,0 +1,22 @@
+@import '../../../../media.scss';
+
+.text-input {
+    display: none;
+
+    @include mediaQuery($tablet-sm) {
+        display: inline-block;
+    }
+
+    color: $primaryGreyColor;
+    height: 32px;
+    width: 300px;
+    padding-left: 10px;
+    text-decoration: none;
+    background-color: $backgroundColor;
+    border-bottom: 1px solid $primaryGreyColor !important;
+    border: 0;
+
+    &:focus {
+        outline: none;
+    }
+}
