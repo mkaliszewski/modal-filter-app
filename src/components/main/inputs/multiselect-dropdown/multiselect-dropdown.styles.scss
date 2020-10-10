@@ -1,0 +1,47 @@
+@import '../../../../media.scss';
+
+.multiselect-dropdown {
+    border: 1px solid $primaryGreyColor;
+    border-top: none;
+    height: 200px;
+    width: 100%;
+    overflow-y: hidden;
+    background-color: $defaultWhiteColor;
+    position: absolute;
+    z-index: 99;
+
+    ::-webkit-scrollbar {
+        width: 5px;
+    }
+    ::-webkit-scrollbar-track {
+        background: $backgroundColor;
+    }
+    ::-webkit-scrollbar-thumb {
+        background: $thirdGreyColor;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+        background: $thirdGreyColor;
+    }
+
+    .multiselect-dropdown__list {
+        height: 160px;
+        width: 100%;
+        padding-left: 0;
+        text-decoration: none;
+        overflow-y: scroll;
+        margin: 0;
+        border: 0;
+        list-style: none;
+        border-top: 1px solid $primaryGreyColor;
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    .multiselect-dropdown__element {
+        border-bottom: 1px solid $thirdGreyColor;
+        padding: 8px;
+        cursor: pointer;
+    }
+}

@@ -9,6 +9,7 @@
     background-color: $backgroundColor;
     top: 50%;
     left: 50%;
+    padding: 2vw 4vw;
     transform: translate(-50%, -50%);
     -webkit-box-shadow: 0px 0px 16px 0px $boxShadowColor;
     -moz-box-shadow: 0px 0px 16px 0px $boxShadowColor;
@@ -29,9 +30,15 @@
         height: 670px;
     }
 
-    .modal__multiselect {
-        margin-top: 5%;
-        height: 50%;
+    .modal__heading {
+        font-size: 18px;
+        margin-top: 6px;
+        margin-bottom: 4vw;
+    }
+
+    .modal__multiselect-container {
+        height: 70%;
+        @include flexBox(column, center, flex-start);
     }
 
     .modal__button-container {
@@ -46,7 +53,7 @@
         }
 
         @include mediaQuery($tablet-lg) {
-            margin: 1vw;
+            margin: 1vw 2vw 2vw 1vw;
         }
     }
 }

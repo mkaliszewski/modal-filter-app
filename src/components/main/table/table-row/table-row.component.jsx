@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Icon from '../../../shared/icon/icon.component';
 import './table-row.styles.scss';
+import { ICONS_NAMES } from '../../../../mock-data/mock.data';
 
 const TableRow = ({ isHeading, rowData }) => {
     const transformDate = (date) => {
@@ -56,7 +57,7 @@ const TableRow = ({ isHeading, rowData }) => {
                         })}
                     </td>
                     <td className="table-row__cell--low">
-                        <Icon />
+                        <Icon iconName={ICONS_NAMES.INFO} />
                     </td>
                 </>
             )}

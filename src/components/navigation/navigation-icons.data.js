@@ -16,10 +16,3 @@ export const NAVIGATION_ICONS = [
         TEXT: 'Wiadomości',
     },
 ];
-
-export const NAVIGATION_ICONS_NAMES = {
-    BOOK: 'book',
-    CHART: 'chart',
-    PHONE: 'phone',
-    ENVELOPE: 'envelope',
-};

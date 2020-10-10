@@ -1,3 +1,14 @@
+export const ICONS_NAMES = {
+    BOOK: 'book',
+    CHART: 'chart',
+    PHONE: 'phone',
+    ENVELOPE: 'envelope',
+    INFO: 'info',
+    SEARCH: 'search',
+    SORT: 'sort',
+    CALENDAR: 'calendar',
+};
+
 export const AGREEMENT_TYPES = {
     PERNAMENT: 'Umowa o pracę',
     PERIOD: 'Umowa zlecenie',

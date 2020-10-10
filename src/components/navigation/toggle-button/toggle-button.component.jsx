@@ -4,10 +4,10 @@ import './toggle-button.styles.scss';
 
 const ToggleButton = ({ openNavbar }) => {
     return (
-        <button onClick={openNavbar} className="togglebutton" type="button">
-            <div className="line" />
-            <div className="line" />
-            <div className="line" />
+        <button onClick={openNavbar} className="toggle-button" type="button">
+            <div className="toggle-button__line" />
+            <div className="toggle-button__line" />
+            <div className="toggle-button__line" />
         </button>
     );
 };

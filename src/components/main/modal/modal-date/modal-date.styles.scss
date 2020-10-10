@@ -1,0 +1,21 @@
+@import '../../../../media.scss';
+
+.modal-date {
+    // height: 45%;
+    width: 50%;
+    position: relative;
+    .modal-date__texts-container {
+        position: relative;
+        @include flexBox(row, flex-start, center);
+        border-bottom: 1px solid $primaryGreyColor;
+        padding: 6px 12px;
+
+        .modal-date__value-container {
+            margin-left: 12px;
+            .modal-date__description {
+                font-size: 12px;
+                color: $primaryGreyColor;
+            }
+        }
+    }
+}

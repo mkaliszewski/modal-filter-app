@@ -1,4 +1,6 @@
 @import '../../../media.scss';
+@mixin iconSort {
+}
 
 .icon {
     font-size: 2em;
@@ -8,4 +10,20 @@
     @include mediaQuery($tablet-sm) {
         font-size: 3em;
     }
+}
+
+.icon--search {
+    color: $defaultBlackColor;
+    font-size: 1.2em;
+    transform: scaleX(-1);
+}
+
+.icon--sort {
+    color: $defaultBlackColor;
+    font-size: 1.2em;
+}
+
+.icon--calendar {
+    color: $primaryGreyColor;
+    font-size: 1.2em;
 }

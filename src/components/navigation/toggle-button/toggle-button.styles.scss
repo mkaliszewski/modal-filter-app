@@ -2,7 +2,7 @@
 
 $button-calc: calc(0.057 * 100vw + 21.76px);
 
-.togglebutton {
+.toggle-button {
     height: 40px;
     @include flexBox(column, space-evenly, center);
     background-color: transparent;
@@ -29,7 +29,7 @@ $button-calc: calc(0.057 * 100vw + 21.76px);
         outline: none;
     }
 
-    .line {
+    .toggle-button__line {
         width: 40px;
         height: 2px;
         background-color: $primaryBlueColor;

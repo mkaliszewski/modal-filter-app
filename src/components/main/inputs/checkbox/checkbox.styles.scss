@@ -1,0 +1,34 @@
+@import '../../../../media.scss';
+
+.checkbox {
+    display: flex;
+    align-items: center;
+    width: 100%;
+
+    .checkbox__label {
+        display: flex;
+        cursor: pointer;
+        &::before {
+            content: '';
+            width: 18px;
+            height: 18px;
+            border-radius: 4px;
+            margin-right: 12px;
+            border: 1px solid $primaryGreyColor;
+        }
+
+        &.checkbox__label--checked {
+            &::before {
+                content: '\002714';
+                @include flexBox(row, center, center);
+                color: $primaryOrangeColor;
+            }
+        }
+    }
+
+    .checkbox__input {
+        opacity: 0;
+        position: absolute;
+        cursor: pointer;
+    }
+}

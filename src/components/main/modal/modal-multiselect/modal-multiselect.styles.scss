@@ -1,4 +1,21 @@
+@import '../../../../media.scss';
+
 .modal-multiselect {
-    height: 25%;
-    background-color: indigo;
+    height: 45%;
+    width: 100%;
+    position: relative;
+    .modal-multiselect__texts-container {
+        position: relative;
+        border-bottom: 1px solid $primaryGreyColor;
+        padding: 6px 12px;
+
+        .modal-multiselect__description {
+            font-size: 12px;
+            color: $primaryGreyColor;
+        }
+    }
+    .modal-multiselect__value-container {
+        margin-top: 4px;
+        @include flexBox(row, space-between, center);
+    }
 }
