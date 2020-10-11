@@ -1,24 +1,28 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import './checkbox.styles.scss';
 
-const Checkbox = ({ id }) => {
-    const [isChecked, setIsChecked] = useState(false);
+const Checkbox = ({ element, isChecked }) => {
+    const elementName = element?.name ? element.name : element;
 
     const toggleCheckbox = (event) => {
         event.preventDefault();
-        setIsChecked(!isChecked);
     };
 
     return (
         <div className="checkbox" onClick={(event) => toggleCheckbox(event)}>
             <label
-                htmlFor="cb4"
+                htmlFor={elementName}
                 className={`checkbox__label ${
                     isChecked ? 'checkbox__label--checked' : undefined
                 }`}
             >
-                Checkbox 4
-                <input type="checkbox" id="cb4" className="checkbox__input" />
+                {elementName}
+                <input
+                    type="checkbox"
+                    id={elementName}
+                    className="checkbox__input"
+                />
             </label>
         </div>
     );

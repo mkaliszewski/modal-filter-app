@@ -10,6 +10,8 @@ import {
     faSearch,
     faSortDown,
     faCalendarAlt,
+    faChevronCircleRight,
+    faChevronCircleLeft,
 } from '@fortawesome/free-solid-svg-icons';
 import { ICONS_NAMES } from '../../../mock-data/mock.data';
 import './icon.styles.scss';
@@ -24,6 +26,8 @@ const Icon = ({ iconName, customCSSClass }) => {
         SEARCH,
         SORT,
         CALENDAR,
+        NEXT,
+        PREVIOUS,
     } = ICONS_NAMES;
 
     const getIcon = (iconType) => {
@@ -44,6 +48,10 @@ const Icon = ({ iconName, customCSSClass }) => {
                 return faSortDown;
             case CALENDAR:
                 return faCalendarAlt;
+            case NEXT:
+                return faChevronCircleRight;
+            case PREVIOUS:
+                return faChevronCircleLeft;
             default:
                 return faInfoCircle;
         }

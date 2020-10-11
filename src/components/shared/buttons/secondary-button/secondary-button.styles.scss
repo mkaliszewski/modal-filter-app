@@ -6,25 +6,26 @@
     background-color: $primaryOrangeColor;
     color: $defaultWhiteColor;
     border-radius: 2px;
-    font-size: 9px;
+    font-size: 14px;
     line-height: 1.5;
     padding: 6px;
     border: 1px solid $primaryOrangeColor;
     text-align: center;
     transition: height 0.2s ease;
+    @include flexBox(row, center, center);
     cursor: pointer;
 
     @include mediaQuery($mobile-sm) {
         width: calc(0.089 * 100vw + 71.4px);
         height: calc(0.022 * 100vw + 22.9px);
         border-radius: calc(0.009 * 100vw - 0.9px);
-        font-size: calc(0.011 * 100vw + 5.4px);
+        font-size: calc(0.003 * 100vw + 13.2px);
     }
 
     @include mediaQuery($tablet-sm) {
         width: 130px;
         height: 40px;
         border-radius: 6px;
-        font-size: 14px;
+        font-size: 18px;
     }
 }

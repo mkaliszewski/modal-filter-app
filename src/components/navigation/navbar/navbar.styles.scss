@@ -12,7 +12,7 @@
     -moz-box-shadow: 5px 0px 10px 0px $boxShadowColor;
     box-shadow: 5px 0px 10px 0px $boxShadowColor;
     transition: transform 0.5s ease;
-    z-index: 99;
+    z-index: 100;
 
     &.navbar--open {
         transform: translateX(0);

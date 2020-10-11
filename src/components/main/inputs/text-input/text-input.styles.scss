@@ -8,18 +8,22 @@
 }
 
 .text-input {
-    display: none;
     background-color: $backgroundColor;
-    color: $primaryGreyColor;
     height: 32px;
-    width: 300px;
-    padding-left: 10px;
+    width: 100%;
     text-decoration: none;
-
+    font-size: 16x;
     border-bottom: 1px solid $primaryGreyColor !important;
     @include textInput;
-    @include mediaQuery($tablet-sm) {
-        display: inline-block;
+
+    @include mediaQuery($mobile-sm) {
+        font-size: calc(0.01 * 100vw + 12.8px);
+        height: calc(0.005 * 100vw + 30.4px);
+    }
+
+    @include mediaQuery($screen-lg) {
+        font-size: 32px;
+        height: 40px;
     }
 }
 

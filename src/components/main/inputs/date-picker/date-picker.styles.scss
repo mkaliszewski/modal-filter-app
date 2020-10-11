@@ -1,0 +1,36 @@
+@import '../../../../media.scss';
+
+.date-picker {
+    width: 270px;
+    padding: 16px;
+    position: absolute;
+    z-index: 99;
+    border: 1px solid $primaryGreyColor;
+    background-color: $defaultWhiteColor;
+    @include flexBox(column, center, space-around);
+
+    @include mediaQuery($mobile-sm) {
+        width: calc(0.081 * 100vw + 244px);
+    }
+
+    @include mediaQuery($screen-lg) {
+        width: 400px;
+    }
+
+    .date-picker__controls-container {
+        width: 30%;
+        @include flexBox(row, space-around, center);
+        margin: 0 0 2% auto;
+
+        .date-picker__control {
+            font-size: 12px;
+            color: $primaryGreyColor;
+        }
+    }
+
+    .date-picker__butons-container {
+        width: 40%;
+        margin: 0 auto;
+        @include flexBox(row, space-between, center);
+    }
+}

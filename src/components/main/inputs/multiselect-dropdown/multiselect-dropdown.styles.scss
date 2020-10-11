@@ -3,25 +3,12 @@
 .multiselect-dropdown {
     border: 1px solid $primaryGreyColor;
     border-top: none;
-    height: 200px;
+    height: 240px;
     width: 100%;
     overflow-y: hidden;
     background-color: $defaultWhiteColor;
     position: absolute;
     z-index: 99;
-
-    ::-webkit-scrollbar {
-        width: 5px;
-    }
-    ::-webkit-scrollbar-track {
-        background: $backgroundColor;
-    }
-    ::-webkit-scrollbar-thumb {
-        background: $thirdGreyColor;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-        background: $thirdGreyColor;
-    }
 
     .multiselect-dropdown__list {
         height: 160px;
@@ -37,11 +24,16 @@
         &:focus {
             outline: none;
         }
+
+        &.multiselect-dropdown__list--empty {
+            @include flexBox(row, center, center);
+        }
     }
 
     .multiselect-dropdown__element {
         border-bottom: 1px solid $thirdGreyColor;
         padding: 8px;
+        height: 40px;
         cursor: pointer;
     }
 }

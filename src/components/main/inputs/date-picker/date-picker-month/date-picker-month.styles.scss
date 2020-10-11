@@ -1,0 +1,26 @@
+.month {
+    height: 250px;
+    .month__month-label {
+        text-align: center;
+        margin: 0 0 16px;
+    }
+
+    .month__day-container {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+
+        justify-content: center;
+        margin-bottom: 10px;
+        font-size: 10px;
+
+        .month__day-label {
+            text-align: center;
+        }
+    }
+
+    .month__day-space {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        justify-content: center;
+    }
+}

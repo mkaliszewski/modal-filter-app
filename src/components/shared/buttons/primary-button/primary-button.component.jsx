@@ -2,16 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './primary-button.styles.scss';
 
-const PrimaryButton = ({ children, buttonFunction, isHighResolution }) => {
+const PrimaryButton = ({ children, buttonFunction }) => {
     return (
         <button
             onClick={buttonFunction}
             type="button"
-            className={`primary-button ${
-                isHighResolution
-                    ? 'primary-button--high'
-                    : 'primary-button--low'
-            }`}
+            className="primary-button"
         >
             {children}
         </button>
@@ -21,11 +17,9 @@ const PrimaryButton = ({ children, buttonFunction, isHighResolution }) => {
 PrimaryButton.propTypes = {
     children: PropTypes.string.isRequired,
     buttonFunction: PropTypes.func,
-    isHighResolution: PropTypes.bool,
 };
 
 PrimaryButton.defaultProps = {
-    isHighResolution: false,
     buttonFunction: () => {},
 };
 

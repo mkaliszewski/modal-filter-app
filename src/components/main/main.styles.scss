@@ -8,7 +8,7 @@
     padding: 4vw;
     margin: 0 auto;
     transition: width 0.2s ease;
-    @include flexBox(column, flex-start, stretch);
+    @include flexBox(column, center, center);
 
     @include mediaQuery($tablet-sm) {
         width: calc(100vw - 125px);
@@ -21,18 +21,42 @@
     }
 
     .main__section-top {
-        height: 20vh;
-        @include flexBox(row, flex-end, flex-end);
+        height: 10vh;
+        width: 80%;
+        @include flexBox(column, flex-end, center);
+        transition: width 0.2s ease;
 
         @include mediaQuery($tablet-sm) {
-            @include flexBox(row, space-between, flex-end);
+            width: 70%;
         }
-    }
 
+        @include mediaQuery($tablet-lg) {
+            width: 60%;
+        }
+
+        .main__input-container {
+            width: 100%;
+            margin: 5vw 0;
+
+            @include mediaQuery($tablet-lg) {
+                margin: 2vw 0;
+            }
+        }
+
+        .main__buttons-container {
+            width: 90%;
+            @include flexBox(row, space-between, center);
+        }
+
+        // @include mediaQuery($tablet-sm) {
+        //     @include flexBox(row, space-between, flex-end);
+        // }
+    }
     .main__section-middle {
-        height: 60vh;
-        margin-top: 5vh;
-        @include flexBox(row, center, flex-start);
-        overflow: hidden;
+        margin-top: 0vh;
+        height: 100%;
+        width: 90%;
+        @include flexBox(column, center, center);
+        overflow: visible;
     }
 }

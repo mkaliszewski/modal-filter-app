@@ -1,12 +1,20 @@
 @import '../../../../media.scss';
+@mixin primaryColors {
+    background-color: $primaryOrangeColor;
+    color: $defaultWhiteColor;
+}
+
+@mixin invertedColors {
+    background-color: $defaultWhiteColor;
+    color: $primaryOrangeColor;
+}
 
 .primary-button {
     width: 100px;
     height: 40px;
-    background-color: $primaryOrangeColor;
-    color: $defaultWhiteColor;
+    @include primaryColors;
     border-radius: 2px;
-    font-size: 9px;
+    font-size: 16px;
     line-height: 1.5;
     padding: 6px;
     border: 1px solid $primaryOrangeColor;
@@ -15,30 +23,22 @@
     cursor: pointer;
 
     @include mediaQuery($mobile-sm) {
-        width: calc(0.089 * 100vw + 71.4px);
-        height: calc(0.045 * 100vw + 25.7px);
+        width: calc(0.069 * 100vw + 78px);
+        height: calc(0.013 * 100vw + 36px);
         border-radius: calc(0.009 * 100vw - 0.9px);
-        font-size: calc(0.011 * 100vw + 5.4px);
+        font-size: calc(0.003 * 100vw + 15px);
     }
 
-    @include mediaQuery($tablet-sm) {
-        width: 140px;
-        height: 50px;
+    @include mediaQuery($screen-lg) {
+        width: 210px;
+        height: 60px;
         border-radius: 6px;
-        font-size: 14px;
+        font-size: 21px;
     }
 
-    &.primary-button--high {
-        display: none;
-
-        @include mediaQuery($tablet-sm) {
-            display: block;
-        }
-    }
-
-    &.primary-button--low {
-        @include mediaQuery($tablet-sm) {
-            display: none;
-        }
+    &:hover {
+        @include invertedColors;
+        border: 3px solid $primaryOrangeColor;
+        font-weight: bold;
     }
 }

@@ -6,7 +6,7 @@
     z-index: 99;
     transition: width, height 0.2s ease;
     position: absolute;
-    background-color: $backgroundColor;
+    background-color: $defaultWhiteColor;
     top: 50%;
     left: 50%;
     padding: 2vw 4vw;
@@ -14,6 +14,7 @@
     -webkit-box-shadow: 0px 0px 16px 0px $boxShadowColor;
     -moz-box-shadow: 0px 0px 16px 0px $boxShadowColor;
     box-shadow: 0px 0px 16px 0px $boxShadowColor;
+    transition: padding 0.2s ease;
 
     @include mediaQuery($mobile-sm) {
         width: calc(0.647 * 100vw + 52.9px);
@@ -25,35 +26,47 @@
         height: calc(0.139 * 100vw + 403.3px);
     }
 
+    @include mediaQuery($tablet-lg) {
+        padding: 2vw 2vw;
+    }
+
     @include mediaQuery($screen-lg) {
         width: 550px;
         height: 670px;
     }
 
     .modal__heading {
-        font-size: 18px;
+        font-size: 20px;
         margin-top: 6px;
-        margin-bottom: 4vw;
+        margin-bottom: 2vw;
+
+        @include mediaQuery($mobile-sm) {
+            font-size: calc(0.004 * 100vw + 18.8px);
+        }
+
+        @include mediaQuery($screen-lg) {
+            font-size: 26px;
+        }
     }
 
-    .modal__multiselect-container {
+    .modal__select-container {
         height: 70%;
         @include flexBox(column, center, flex-start);
     }
 
     .modal__button-container {
         position: absolute;
-        bottom: 0;
-        right: 0;
-        margin: 4vw;
-        transition: margin 0.2s ease;
+        bottom: 4vw;
+        right: 4vw;
+        transition: bottom, right 0.2s ease;
 
         @include mediaQuery($tablet-lg) {
-            margin: calc(-0.007 * 100vw + 6.1vw);
+            bottom: 3vw;
+            right: 2vw;
         }
 
-        @include mediaQuery($tablet-lg) {
-            margin: 1vw 2vw 2vw 1vw;
+        @include mediaQuery($screen-lg) {
+            bottom: 2vw;
         }
     }
 }

@@ -5,7 +5,12 @@ import { ICONS_NAMES } from '../../../../mock-data/mock.data';
 
 import './text-input.styles.scss';
 
-const TextInput = ({ placeholder, isDropdown }) => (
+const TextInput = ({
+    placeholder,
+    isDropdown,
+    handeNameSearchChange,
+    handleKeypress,
+}) => (
     <div className={isDropdown ? 'text-input--container' : undefined}>
         {isDropdown && (
             <Icon
@@ -17,6 +22,8 @@ const TextInput = ({ placeholder, isDropdown }) => (
             type="text"
             placeholder={placeholder}
             className={isDropdown ? 'text-input--dropdown' : 'text-input'}
+            onChange={handeNameSearchChange}
+            onKeyPress={handleKeypress}
         />
     </div>
 );
@@ -24,10 +31,14 @@ const TextInput = ({ placeholder, isDropdown }) => (
 TextInput.propTypes = {
     placeholder: PropTypes.string.isRequired,
     isDropdown: PropTypes.bool,
+    handeNameSearchChange: PropTypes.func,
+    handleKeypress: PropTypes.func,
 };
 
 TextInput.defaultProps = {
     isDropdown: false,
+    handeNameSearchChange: () => {},
+    handleKeypress: () => {},
 };
 
 export default TextInput;

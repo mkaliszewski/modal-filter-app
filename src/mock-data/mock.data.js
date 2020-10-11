@@ -7,6 +7,8 @@ export const ICONS_NAMES = {
     SEARCH: 'search',
     SORT: 'sort',
     CALENDAR: 'calendar',
+    NEXT: 'next',
+    PREVIOUS: 'previous',
 };
 
 export const AGREEMENT_TYPES = {
@@ -14,6 +16,8 @@ export const AGREEMENT_TYPES = {
     PERIOD: 'Umowa zlecenie',
     TASK: 'Umowa o dzieło',
 };
+
+export const AGREEMENT_OPTIONS = Object.values(AGREEMENT_TYPES);
 
 export const JOB_TYPES = {
     COOK: 'Kucharz',
@@ -23,11 +27,15 @@ export const JOB_TYPES = {
     SERVICE: 'Serwisant',
 };
 
+export const JOB_OPTIONS = Object.values(JOB_TYPES);
+
 export const LOCATIONS = {
     ARKADY: 'Arkady',
     PASAZ: 'Pasaż Grunwaldzki',
     BIELANY: 'Aleja Bielany',
 };
+
+export const LOCATIONS_OPTIONS = Object.values(LOCATIONS);
 
 export const EMPLOYEES_HEADERS = [
     'Imię i nazwisko',
@@ -229,5 +237,24 @@ export const EMPLOYEES = [
         job: JOB_TYPES.HELP,
         agreement: AGREEMENT_TYPES.TASK,
         locations: [LOCATIONS.ARKADY, LOCATIONS.PASAZ, LOCATIONS.BIELANY],
+    },
+];
+
+export const MODAL_CONTENT = [
+    {
+        title: 'Stanowiska',
+        options: Object.values(JOB_TYPES),
+    },
+    {
+        title: 'Lokalizacje',
+        options: Object.values(LOCATIONS),
+    },
+    {
+        title: 'Pracownicy',
+        options: EMPLOYEES,
+    },
+    {
+        title: 'Warunki zatrudnienia',
+        options: Object.values(AGREEMENT_TYPES),
     },
 ];
