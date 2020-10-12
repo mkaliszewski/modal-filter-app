@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import MultiselectDropdown from '../../inputs/multiselect-dropdown/multiselect-dropdown.component';
 import Icon from '../../../shared/icon/icon.component';
-import { ICONS_NAMES } from '../../../../mock-data/mock.data';
+import { ICONS_NAMES, JOB_FILTERS } from '../../../../mock-data/mock.data';
 import './modal-multiselect.styles.scss';
+import Checkbox from '../../inputs/checkbox/checkbox.component';
 
 const ModalMultiselect = ({
     title,
@@ -12,6 +13,9 @@ const ModalMultiselect = ({
     isAnyModalOpen,
     filterKey,
     updateFilterValues,
+    searchFilters,
+    filtredRecords,
+    filtredEmployees,
 }) => {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const [selectedOptions, setSelectedOptions] = useState([]);
@@ -33,23 +37,37 @@ const ModalMultiselect = ({
     }, [selectedOptions]);
 
     const getInputValue = () => {
-        const optionsLength = selectedOptions.length;
-        if (optionsLength) {
+        const selectedOptionsLength = selectedOptions.length;
+
+        if (selectedOptionsLength) {
+            if (
+                filterKey === 'employees' &&
+                JSON.stringify(searchFilters) === JSON.stringify(JOB_FILTERS)
+            ) {
+                setSelectedOptions([]);
+                return 'Wybierz';
+            }
+
+            if (
+                filterKey === 'employees' &&
+                !selectedOptions.every((val) => filtredRecords.includes(val))
+            ) {
+                setSelectedOptions([]);
+            }
+
             const fixOptions = (option) =>
                 typeof option === 'object' ? option.name : option;
-            // typeof option === 'string' ? option : option.name;
-            const firstOption = fixOptions(selectedOptions[0]);
-            const secondOption = fixOptions(selectedOptions[1]);
 
-            switch (optionsLength) {
+            const firstOption = fixOptions(selectedOptions[0]);
+            switch (selectedOptionsLength) {
                 case 1:
                     return `${firstOption}`;
                 case 2:
-                    return `${firstOption}, ${secondOption}`;
+                    return `${firstOption}, ${fixOptions(selectedOptions[1])}`;
                 default:
-                    return `${firstOption}, ${secondOption} +${
-                        optionsLength - 2
-                    }`;
+                    return `${firstOption}, ${fixOptions(
+                        selectedOptions[1]
+                    )} +${selectedOptionsLength - 2}`;
             }
         } else {
             return 'Wybierz';
@@ -76,9 +94,12 @@ const ModalMultiselect = ({
 
             {isDropdownOpen && (
                 <MultiselectDropdown
-                    options={options}
+                    selectOptions={options}
+                    employees={filtredRecords}
                     selectedOptions={selectedOptions}
                     setSelectedOptions={setSelectedOptions}
+                    searchFilters={searchFilters}
+                    filterKey={filterKey}
                 />
             )}
         </div>
@@ -108,6 +129,8 @@ ModalMultiselect.propTypes = {
 ModalMultiselect.defaultProps = {
     setModalRule: () => {},
     isAnyModalOpen: false,
+    filtredEmployees: [],
+    filtredRecords: [],
 };
 
 export default ModalMultiselect;

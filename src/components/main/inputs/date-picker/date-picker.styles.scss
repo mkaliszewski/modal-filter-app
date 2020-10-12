@@ -18,13 +18,13 @@
     }
 
     .date-picker__controls-container {
-        width: 30%;
-        @include flexBox(row, space-around, center);
+        display: flex;
         margin: 0 0 2% auto;
 
         .date-picker__control {
             font-size: 12px;
             color: $primaryGreyColor;
+            margin-left: 12px;
         }
     }
 

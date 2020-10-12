@@ -258,3 +258,24 @@ export const MODAL_CONTENT = [
         options: Object.values(AGREEMENT_TYPES),
     },
 ];
+
+export const INITIAL_FILTERS = {
+    date: {
+        startDate: null,
+        endDate: null,
+    },
+    jobs: [],
+    locations: [],
+    agreements: [],
+    employees: [],
+};
+
+export const JOB_FILTERS = {
+    date: {
+        startDate: null,
+        endDate: null,
+    },
+    jobs: [],
+    locations: [],
+    agreements: [],
+};

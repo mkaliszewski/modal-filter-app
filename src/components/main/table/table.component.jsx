@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import TableRow from './table-row/table-row.component';
-import { EMPLOYEES_HEADERS, EMPLOYEES } from '../../../mock-data/mock.data';
+import { EMPLOYEES_HEADERS } from '../../../mock-data/mock.data';
 import './table.styles.scss';
 
 const Table = ({ data }) => {

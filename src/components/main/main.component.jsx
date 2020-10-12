@@ -4,20 +4,9 @@ import TextInput from './inputs/text-input/text-input.component';
 import Table from './table/table.component';
 import Modal from './modal/modal.component';
 import Backdrop from '../shared/backdrop/backdrop.component';
-import { EMPLOYEES } from '../../mock-data/mock.data';
+import { EMPLOYEES, INITIAL_FILTERS } from '../../mock-data/mock.data';
 import { filterName, filterThroughFilters } from './helpers';
 import './main.styles.scss';
-
-const INITIAL_FILTERS = {
-    date: {
-        startDate: null,
-        endDate: null,
-    },
-    jobs: [],
-    locations: [],
-    agreements: [],
-    employees: [],
-};
 
 const Main = () => {
     const [isFiltersModalOpen, setIsFiltersModalOpen] = useState(false);
@@ -26,14 +15,14 @@ const Main = () => {
 
     // primary name state
     const [nameSearchValue, setNameSearchValue] = useState('');
-    const [filtredNames, setFiltredNames] = useState(EMPLOYEES);
 
     // filters state
     const [searchFilters, setSearchFilters] = useState(INITIAL_FILTERS);
+    const [filtredRecords, setFiltredRecords] = useState([]);
 
     // table data
 
-    const [tableData, setTableData] = useState(filtredNames);
+    const [tableData, setTableData] = useState([]);
 
     // component handlers
     const openFiltersModal = () => {
@@ -55,12 +44,6 @@ const Main = () => {
 
     const hideTable = () => {
         setIsTableVisible(false);
-    };
-
-    // name search handler
-    const searchName = () => {
-        setTableData(filtredNames);
-        displayTable();
     };
 
     // modal display handlers
@@ -102,16 +85,37 @@ const Main = () => {
     };
 
     useEffect(() => {
-        setFiltredNames(filterName(nameSearchValue, EMPLOYEES));
+        setTableData(filterName(nameSearchValue, EMPLOYEES));
     }, [nameSearchValue]);
 
     useEffect(() => {
-        setFiltredNames(filterThroughFilters(searchFilters, EMPLOYEES));
+        setFiltredRecords(filterThroughFilters(searchFilters, EMPLOYEES));
     }, [searchFilters]);
 
     const resetFiltredNames = () => {
         hideTable();
+        setNameSearchValue('');
         setSearchFilters(INITIAL_FILTERS);
+    };
+
+    const transformDate = (date) => {
+        if (date instanceof Date) {
+            const day = date.getDate();
+            const month = date.getMonth() + 1;
+            const year = date.getFullYear();
+
+            return `${day}/${month < 10 ? `0${month}` : month}/${year}`;
+        }
+        return '-';
+    };
+
+    const displayFilterValues = (arr) => {
+        if (arr.length) {
+            return arr.map((el, index) =>
+                index === arr.length - 1 ? el : `${el}, `
+            );
+        }
+        return '-';
     };
 
     return (
@@ -122,6 +126,22 @@ const Main = () => {
                     <PrimaryButton buttonFunction={resetFiltredNames}>
                         PONÓW
                     </PrimaryButton>
+                    <div>
+                        Użyto następujących filtrów:
+                        <br />
+                        Data początkowa:
+                        {transformDate(searchFilters.date.startDate)} <br />
+                        Data końcowa:{' '}
+                        {transformDate(searchFilters.date.endDate)} <br />
+                        Stanowiska: {displayFilterValues(searchFilters.jobs)}
+                        <br />
+                        Lokalizacje:{' '}
+                        {displayFilterValues(searchFilters.locations)}
+                        <br />
+                        Typ zatrudnienia:
+                        {displayFilterValues(searchFilters.agreements)}
+                        <br />
+                    </div>
                 </section>
             ) : (
                 <section className="main__section-top">
@@ -133,7 +153,7 @@ const Main = () => {
                         />
                     </div>
                     <div className="main__buttons-container">
-                        <PrimaryButton buttonFunction={searchName}>
+                        <PrimaryButton buttonFunction={displayTable}>
                             SZUKAJ
                         </PrimaryButton>
                         <PrimaryButton buttonFunction={startFilters}>
@@ -148,7 +168,15 @@ const Main = () => {
                     <Modal
                         filterElements={filterElements}
                         updateFilterValues={updateFilterValues}
-                        employees={filtredNames}
+                        searchFilters={{
+                            date: searchFilters.date,
+                            jobs: searchFilters.jobs,
+                            locations: searchFilters.locations,
+                            agreements: searchFilters.agreements,
+                        }}
+                        isEmployeeSelected={!!searchFilters.employees.length}
+                        filtredEmployees={searchFilters.employees}
+                        filtredRecords={filtredRecords}
                     />
                     <Backdrop closeFunction={closeFiltersModal} />
                 </section>

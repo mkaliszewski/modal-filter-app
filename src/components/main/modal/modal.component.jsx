@@ -7,10 +7,19 @@ import {
     JOB_OPTIONS,
     LOCATIONS_OPTIONS,
     AGREEMENT_OPTIONS,
+    EMPLOYEES,
 } from '../../../mock-data/mock.data';
 import './modal.styles.scss';
 
-const Modal = ({ filterElements, updateFilterValues, employees }) => {
+const Modal = ({
+    filterElements,
+    updateFilterValues,
+    employees,
+    searchFilters,
+    isEmployeeSelected,
+    filtredRecords,
+    filtredEmployees,
+}) => {
     const [isAnyModalOpen, setIsAnyModalOpen] = useState(false);
     const setModalRule = (rule) => {
         setIsAnyModalOpen(rule);
@@ -43,11 +52,14 @@ const Modal = ({ filterElements, updateFilterValues, employees }) => {
                 />
                 <ModalMultiselect
                     title="Pracownicy"
-                    options={employees}
+                    options={EMPLOYEES}
                     setModalRule={setModalRule}
                     isAnyModalOpen={isAnyModalOpen}
                     updateFilterValues={updateFilterValues}
                     filterKey="employees"
+                    searchFilters={searchFilters}
+                    filtredRecords={filtredRecords}
+                    filtredEmployees={filtredEmployees}
                 />
                 <ModalMultiselect
                     title="Warunki zatrudnienia"
@@ -60,7 +72,10 @@ const Modal = ({ filterElements, updateFilterValues, employees }) => {
             </div>
 
             <div className="modal__button-container">
-                <SecondaryButton buttonFunction={filterElements}>
+                <SecondaryButton
+                    buttonFunction={filterElements}
+                    isDisabled={!isEmployeeSelected}
+                >
                     WYŚWIETL
                 </SecondaryButton>
             </div>
