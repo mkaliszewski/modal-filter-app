@@ -23,15 +23,10 @@
     }
 
     .navbar__list {
-        height: 40%;
+        height: 50%;
         @include flexBox(column, space-around, center);
         list-style: none;
         padding: 0 12px;
-        transition: height 0.2s ease;
-
-        @include mediaQuery($tablet-sm) {
-            height: 50%;
-        }
 
         .navbar__item {
             width: 100%;

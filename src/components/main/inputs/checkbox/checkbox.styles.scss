@@ -11,7 +11,7 @@
 
     .checkbox__label {
         display: flex;
-        user-select: none;
+
         cursor: pointer;
         &::before {
             content: '';

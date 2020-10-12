@@ -8,7 +8,6 @@
     border: 1px solid $primaryGreyColor;
     background-color: $defaultWhiteColor;
     @include flexBox(column, center, space-around);
-    user-select: none;
 
     @include mediaQuery($mobile-sm) {
         width: calc(0.081 * 100vw + 244px);

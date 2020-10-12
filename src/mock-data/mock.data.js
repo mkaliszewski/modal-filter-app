@@ -279,3 +279,26 @@ export const EMPLOYEES = [
         locations: [LOCATIONS.ARKADY, LOCATIONS.PASAZ, LOCATIONS.BIELANY],
     },
 ];
+
+export const MULTISELECTABLE_OPTIONS = [
+    {
+        title: 'Stanowiska',
+        options: JOB_OPTIONS,
+        filterKey: 'jobs',
+    },
+    {
+        title: 'Lokalizacje',
+        options: LOCATIONS_OPTIONS,
+        filterKey: 'locations',
+    },
+    {
+        title: 'Pracownicy',
+        options: EMPLOYEES,
+        filterKey: 'employees',
+    },
+    {
+        title: 'Warunki zatrudnienia',
+        options: AGREEMENT_OPTIONS,
+        filterKey: 'agreements',
+    },
+];

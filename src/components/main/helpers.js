@@ -1,8 +1,32 @@
+import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+
+// window width hook
+
+const getWindowWidth = () => window.innerWidth;
+
+export const useWindowWidth = () => {
+    const [windowWidth, setWindowWidth] = useState(getWindowWidth());
+
+    useEffect(() => {
+        const handleWindowWithChange = () => {
+            setWindowWidth(getWindowWidth());
+        };
+        window.addEventListener('resize', handleWindowWithChange);
+
+        return () =>
+            window.removeEventListener('resize', handleWindowWithChange);
+    }, []);
+
+    return windowWidth;
+};
+
+// filters
 
 export const filterName = (searchName, arr) =>
     arr.filter((element) => {
-        const elementName = element?.name ? element.name : element;
+        const elementName =
+            typeof element === 'string' ? element : element.name;
         return searchName
             ? elementName.toLowerCase().includes(searchName.toLowerCase())
             : element;
@@ -40,6 +64,19 @@ export const filterThroughFilters = (filters, arr) => {
         .filter(filterAgreements);
 };
 
+export const formatDateToString = (fullDate) => {
+    if (fullDate instanceof Date) {
+        const day = fullDate.getDay();
+        const month = fullDate.getMonth() + 1;
+        const year = fullDate.getFullYear();
+
+        return `${day}/${month < 10 ? `0${month}` : month}/${year}`;
+    }
+    return '-';
+};
+
+// proptypes
+
 export const EMPLOYEE_PROPTYPES = PropTypes.shape({
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
@@ -65,14 +102,3 @@ export const SEARCH_FILTERS_PROPTYPES = PropTypes.shape({
     agreements: PropTypes.arrayOf(PropTypes.string),
     employees: PropTypes.arrayOf(EMPLOYEE_PROPTYPES),
 });
-
-export const formatDateToString = (fullDate) => {
-    if (fullDate instanceof Date) {
-        const day = fullDate.getDay();
-        const month = fullDate.getMonth() + 1;
-        const year = fullDate.getFullYear();
-
-        return `${day}/${month < 10 ? `0${month}` : month}/${year}`;
-    }
-    return '-';
-};

@@ -12,24 +12,30 @@ const INITIAL_PICKER_STATE = {
     focusedInput: START_DATE,
 };
 
-const ModalDate = ({ setModalRule, isAnyModalOpen, updateFilterValues }) => {
+const ModalDate = ({
+    handleModalRuleChange,
+    isAnyModalOpen,
+    updateFilterValues,
+}) => {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const [pickerState, setPickerState] = useState(INITIAL_PICKER_STATE);
 
     // dropdown handlers
-    const openDropdown = () => {
+
+    const handleDropdownOpen = () => {
         setIsDropdownOpen(true);
-        setModalRule(true);
+        handleModalRuleChange(true);
     };
 
-    const closeDropdown = () => {
+    const handleDropdownClose = () => {
         if (isDropdownOpen) {
             setIsDropdownOpen(false);
-            setModalRule(false);
+            handleModalRuleChange(false);
         }
     };
 
-    // date handlers
+    // date picker handlers
+
     const handleDateChange = (data) => {
         if (!data.focusedInput) {
             setPickerState({ ...data, focusedInput: START_DATE });
@@ -48,7 +54,9 @@ const ModalDate = ({ setModalRule, isAnyModalOpen, updateFilterValues }) => {
         updateFilterValues('date', { startDate, endDate });
     }, [pickerState]);
 
-    const transformDate = (date) => {
+    // display handlers
+
+    const formatDateToDMString = (date) => {
         if (date instanceof Date) {
             const day = date.getDate();
             const month = date.getMonth() + 1;
@@ -59,17 +67,24 @@ const ModalDate = ({ setModalRule, isAnyModalOpen, updateFilterValues }) => {
     };
 
     const inputValue = startDate
-        ? `${transformDate(startDate)} - ${transformDate(endDate)}`
+        ? `${formatDateToDMString(startDate)} - ${formatDateToDMString(
+              endDate
+          )}`
         : 'Wybierz';
 
     const canDropdownBeClosed =
         (isAnyModalOpen && endDate) ||
         (isAnyModalOpen && !startDate && !endDate);
+
     return (
         <div className="modal-date">
             <div
                 className="modal-date__texts-container"
-                onClick={canDropdownBeClosed ? closeDropdown : openDropdown}
+                onClick={
+                    canDropdownBeClosed
+                        ? handleDropdownClose
+                        : handleDropdownOpen
+                }
             >
                 <Icon
                     iconName={ICONS_NAMES.CALENDAR}
@@ -84,10 +99,12 @@ const ModalDate = ({ setModalRule, isAnyModalOpen, updateFilterValues }) => {
 
             {isDropdownOpen && (
                 <DatePicker
-                    handleDateChange={handleDateChange}
                     pickerState={pickerState}
-                    closeDropdown={canDropdownBeClosed ? closeDropdown : null}
+                    handleDateChange={handleDateChange}
                     clearDatePicker={clearDatePicker}
+                    closeDropdown={
+                        canDropdownBeClosed ? handleDropdownClose : null
+                    }
                 />
             )}
         </div>
@@ -95,14 +112,9 @@ const ModalDate = ({ setModalRule, isAnyModalOpen, updateFilterValues }) => {
 };
 
 ModalDate.propTypes = {
-    setModalRule: PropTypes.func,
-    isAnyModalOpen: PropTypes.bool,
+    handleModalRuleChange: PropTypes.func.isRequired,
+    isAnyModalOpen: PropTypes.bool.isRequired,
     updateFilterValues: PropTypes.func.isRequired,
-};
-
-ModalDate.defaultProps = {
-    setModalRule: () => {},
-    isAnyModalOpen: false,
 };
 
 export default ModalDate;

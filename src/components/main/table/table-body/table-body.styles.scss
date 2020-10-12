@@ -15,7 +15,7 @@
         height: 360px;
     }
 
-    &.table-body-empty {
+    &.table-body--empty {
         @include flexBox(row, center, center);
     }
 }

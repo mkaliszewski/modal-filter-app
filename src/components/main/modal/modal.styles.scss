@@ -33,6 +33,23 @@
     @include mediaQuery($screen-lg) {
         width: 550px;
         height: 670px;
+        padding: 1vw 1vw;
+    }
+    .modal__close-button {
+        // width: 40px;
+        // height: 40px;
+        float: right;
+        border: none;
+        background-color: $defaultWhiteColor;
+        color: $primaryGreyColor;
+        padding-right: 0;
+        font-size: 18px;
+        cursor: pointer;
+        transition: font-size 0.2s ease;
+
+        @include mediaQuery($tablet-sm) {
+            font-size: 22px;
+        }
     }
 
     .modal__heading {
@@ -67,6 +84,7 @@
 
         @include mediaQuery($screen-lg) {
             bottom: 2vw;
+            right: 1vw;
         }
     }
 }

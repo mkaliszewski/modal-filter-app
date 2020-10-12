@@ -20,7 +20,7 @@
         margin: 0 auto;
     }
 
-    .main__section-top {
+    .main__section-search {
         height: 10vh;
         width: 80%;
         @include flexBox(column, flex-end, center);
@@ -47,12 +47,8 @@
             width: 90%;
             @include flexBox(row, space-between, center);
         }
-
-        // @include mediaQuery($tablet-sm) {
-        //     @include flexBox(row, space-between, flex-end);
-        // }
     }
-    .main__section-middle {
+    .main__section-table {
         margin-top: 0vh;
         height: 100%;
         width: 90%;

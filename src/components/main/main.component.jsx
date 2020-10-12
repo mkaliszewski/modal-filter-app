@@ -5,7 +5,11 @@ import Table from './table/table.component';
 import Modal from './modal/modal.component';
 import Backdrop from '../shared/backdrop/backdrop.component';
 import FiltersInfo from './filters-info/filters-info.component';
-import { EMPLOYEES, INITIAL_FILTERS } from '../../mock-data/mock.data';
+import {
+    EMPLOYEES,
+    INITIAL_FILTERS,
+    JOB_FILTERS,
+} from '../../mock-data/mock.data';
 import { filterName, filterThroughFilters } from './helpers';
 import './main.styles.scss';
 
@@ -13,19 +17,14 @@ const Main = () => {
     const [isFiltersModalOpen, setIsFiltersModalOpen] = useState(false);
     const [isTableVisible, setIsTableVisible] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
-
-    // primary name state
     const [nameSearchValue, setNameSearchValue] = useState('');
-
-    // filters state
     const [searchFilters, setSearchFilters] = useState(INITIAL_FILTERS);
     const [filtredRecords, setFiltredRecords] = useState([]);
-
-    // table data
-
     const [tableData, setTableData] = useState([]);
 
     // component handlers
+
+    // component handlers - modal
     const openFiltersModal = () => {
         setIsFiltersModalOpen(true);
     };
@@ -34,6 +33,7 @@ const Main = () => {
         setIsFiltersModalOpen(false);
     };
 
+    // component handlers - table
     const displayTable = () => {
         setIsLoading(true);
 
@@ -47,14 +47,14 @@ const Main = () => {
         setIsTableVisible(false);
     };
 
-    // modal display handlers
+    // modal handlers
 
     const startFilters = () => {
         setNameSearchValue('');
         openFiltersModal();
     };
 
-    const filterElements = () => {
+    const handleTableDisplay = () => {
         setTableData(searchFilters.employees);
         closeFiltersModal();
         displayTable();
@@ -66,7 +66,7 @@ const Main = () => {
         setNameSearchValue(value);
     };
 
-    const handleKeyPress = ({ key }) => {
+    const handleNameSearchKeyPress = ({ key }) => {
         if (key === 'Enter') {
             displayTable();
         }
@@ -75,14 +75,7 @@ const Main = () => {
     // filters change handlers
 
     const updateFilterValues = (filterKey, value) => {
-        if (filterKey === 'date') {
-            setSearchFilters({
-                ...searchFilters,
-                date: value,
-            });
-        } else {
-            setSearchFilters({ ...searchFilters, [filterKey]: value });
-        }
+        setSearchFilters({ ...searchFilters, [filterKey]: value });
     };
 
     useEffect(() => {
@@ -93,32 +86,41 @@ const Main = () => {
         setFiltredRecords(filterThroughFilters(searchFilters, EMPLOYEES));
     }, [searchFilters]);
 
-    const resetFiltredNames = () => {
+    const { employees, ...basicFilters } = searchFilters;
+
+    const areFiltersEmpty =
+        JSON.stringify(basicFilters) === JSON.stringify(JOB_FILTERS);
+
+    // reset handler
+
+    const resetToInitialState = () => {
         hideTable();
         setNameSearchValue('');
         setSearchFilters(INITIAL_FILTERS);
+        setFiltredRecords([]);
+        setTableData(EMPLOYEES);
     };
 
     return (
         <article className="main">
             {isTableVisible ? (
-                <section className="main__section-middle">
+                <section className="main__section-table">
                     <Table data={tableData} />
                     <div className="main__filters-info-container">
                         <FiltersInfo searchFilters={searchFilters} />
                         <PrimaryButton
                             text="PONÓW"
-                            buttonFunction={resetFiltredNames}
+                            buttonFunction={resetToInitialState}
                         />
                     </div>
                 </section>
             ) : (
-                <section className="main__section-top">
+                <section className="main__section-search">
                     <div className="main__input-container">
                         <TextInput
                             placeholder="Wyszukaj po imieniu i nazwisku..."
                             handeNameSearchChange={handeNameSearchChange}
-                            handleKeyPress={handleKeyPress}
+                            handleKeyPress={handleNameSearchKeyPress}
                         />
                     </div>
                     <div className="main__buttons-container">
@@ -137,19 +139,14 @@ const Main = () => {
             {isFiltersModalOpen && (
                 <section>
                     <Modal
-                        filterElements={filterElements}
                         updateFilterValues={updateFilterValues}
-                        searchFilters={{
-                            date: searchFilters.date,
-                            jobs: searchFilters.jobs,
-                            locations: searchFilters.locations,
-                            agreements: searchFilters.agreements,
-                        }}
-                        isEmployeeSelected={!!searchFilters.employees.length}
-                        filtredEmployees={searchFilters.employees}
+                        handleTableDisplay={handleTableDisplay}
                         filtredRecords={filtredRecords}
+                        isEmployeeSelected={!!searchFilters.employees.length}
+                        areFiltersEmpty={areFiltersEmpty}
+                        modalCloseFunction={closeFiltersModal}
                     />
-                    <Backdrop closeFunction={closeFiltersModal} />
+                    <Backdrop />
                 </section>
             )}
 

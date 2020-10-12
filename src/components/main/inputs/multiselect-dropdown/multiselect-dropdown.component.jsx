@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Checkbox from '../checkbox/checkbox.component';
 import TextInput from '../text-input/text-input.component';
-import { filterName } from '../../helpers';
-import { JOB_FILTERS } from '../../../../mock-data/mock.data';
+import { filterName, EMPLOYEE_PROPTYPES } from '../../helpers';
 import './multiselect-dropdown.styles.scss';
 
 const INITIAL_HEIGHT = 80;
@@ -14,13 +13,13 @@ const MAX_LIST_HEIGHT = ELEMENT_HEIGHT * MAX_EEMENT_NUM + OFFSET;
 
 const MultiselectDropdown = ({
     selectOptions,
+    filtredRecords,
     selectedOptions,
     setSelectedOptions,
-    searchFilters,
-    filterKey,
-    employees,
+    isEmployeesMultiselect,
+    areFiltersEmpty,
 }) => {
-    const options = filterKey === 'employees' ? employees : selectOptions;
+    const options = isEmployeesMultiselect ? filtredRecords : selectOptions;
     const [searchValue, setSearchValue] = useState('');
     const [filtredOptions, setFiltredOptions] = useState(options);
 
@@ -29,15 +28,12 @@ const MultiselectDropdown = ({
     };
 
     useEffect(() => {
-        if (
-            filterKey === 'employees' &&
-            JSON.stringify(searchFilters) === JSON.stringify(JOB_FILTERS)
-        ) {
+        if (isEmployeesMultiselect && areFiltersEmpty) {
             setFiltredOptions([]);
         } else {
             setFiltredOptions(filterName(searchValue, options));
         }
-    }, [searchValue]);
+    }, [searchValue, areFiltersEmpty]);
 
     const numberOfElements = options.length;
     const listHeight = numberOfElements * ELEMENT_HEIGHT + OFFSET;
@@ -46,16 +42,14 @@ const MultiselectDropdown = ({
     const dropdownHeight = INITIAL_HEIGHT + listFixedHeight;
 
     const filtredOptionsLength = filtredOptions.length;
-    const selectedOptionsLength = selectedOptions.length;
-    const areOptionsEqual = filtredOptionsLength === selectedOptionsLength;
 
-    const handleAllOptionsSelect = () => {
-        if (!areOptionsEqual) {
-            setSelectedOptions(filtredOptions);
-        } else {
-            setSelectedOptions([]);
-        }
-    };
+    const areOptionsEqual =
+        JSON.stringify(filtredOptions) === JSON.stringify(selectedOptions);
+
+    const handleAllOptionsSelect = () =>
+        areOptionsEqual
+            ? setSelectedOptions([])
+            : setSelectedOptions(filtredOptions);
 
     const handleSingleOptionSelect = (el) => {
         const index = selectedOptions.indexOf(el);
@@ -90,7 +84,7 @@ const MultiselectDropdown = ({
             >
                 <Checkbox
                     element="Wszystkie"
-                    isChecked={!!areOptionsEqual && !!filtredOptionsLength}
+                    isChecked={areOptionsEqual && !!filtredOptionsLength}
                 />
             </div>
 
@@ -104,12 +98,15 @@ const MultiselectDropdown = ({
             >
                 {filtredOptionsLength
                     ? filtredOptions.map((el) => {
-                          const elementName = el?.name ? el.name : el;
+                          const elementName =
+                              typeof el === 'string' ? el : el.name;
+
                           return (
                               <li
                                   key={elementName}
                                   className="multiselect-dropdown__element"
                                   onClick={() => handleSingleOptionSelect(el)}
+                                  role="menuitem"
                               >
                                   <Checkbox
                                       element={el}
@@ -122,6 +119,19 @@ const MultiselectDropdown = ({
             </ul>
         </div>
     );
+};
+
+MultiselectDropdown.propTypes = {
+    selectOptions: PropTypes.arrayOf(
+        PropTypes.oneOfType([PropTypes.string, EMPLOYEE_PROPTYPES])
+    ).isRequired,
+    filtredRecords: PropTypes.arrayOf(EMPLOYEE_PROPTYPES).isRequired,
+    selectedOptions: PropTypes.arrayOf(
+        PropTypes.oneOfType([PropTypes.string, EMPLOYEE_PROPTYPES])
+    ).isRequired,
+    setSelectedOptions: PropTypes.func.isRequired,
+    isEmployeesMultiselect: PropTypes.bool.isRequired,
+    areFiltersEmpty: PropTypes.bool.isRequired,
 };
 
 export default MultiselectDropdown;
