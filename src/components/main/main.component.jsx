@@ -4,6 +4,7 @@ import TextInput from './inputs/text-input/text-input.component';
 import Table from './table/table.component';
 import Modal from './modal/modal.component';
 import Backdrop from '../shared/backdrop/backdrop.component';
+import FiltersInfo from './filters-info/filters-info.component';
 import { EMPLOYEES, INITIAL_FILTERS } from '../../mock-data/mock.data';
 import { filterName, filterThroughFilters } from './helpers';
 import './main.styles.scss';
@@ -65,7 +66,7 @@ const Main = () => {
         setNameSearchValue(value);
     };
 
-    const handleKeypress = ({ key }) => {
+    const handleKeyPress = ({ key }) => {
         if (key === 'Enter') {
             displayTable();
         }
@@ -98,50 +99,17 @@ const Main = () => {
         setSearchFilters(INITIAL_FILTERS);
     };
 
-    const transformDate = (date) => {
-        if (date instanceof Date) {
-            const day = date.getDate();
-            const month = date.getMonth() + 1;
-            const year = date.getFullYear();
-
-            return `${day}/${month < 10 ? `0${month}` : month}/${year}`;
-        }
-        return '-';
-    };
-
-    const displayFilterValues = (arr) => {
-        if (arr.length) {
-            return arr.map((el, index) =>
-                index === arr.length - 1 ? el : `${el}, `
-            );
-        }
-        return '-';
-    };
-
     return (
         <article className="main">
             {isTableVisible ? (
                 <section className="main__section-middle">
                     <Table data={tableData} />
-                    <PrimaryButton
-                        text="PONÓW"
-                        buttonFunction={resetFiltredNames}
-                    />
-                    <div>
-                        Użyto następujących filtrów:
-                        <br />
-                        Data początkowa:
-                        {transformDate(searchFilters.date.startDate)} <br />
-                        Data końcowa:
-                        {transformDate(searchFilters.date.endDate)} <br />
-                        Stanowiska: {displayFilterValues(searchFilters.jobs)}
-                        <br />
-                        Lokalizacje:
-                        {displayFilterValues(searchFilters.locations)}
-                        <br />
-                        Typ zatrudnienia:
-                        {displayFilterValues(searchFilters.agreements)}
-                        <br />
+                    <div className="main__filters-info-container">
+                        <FiltersInfo searchFilters={searchFilters} />
+                        <PrimaryButton
+                            text="PONÓW"
+                            buttonFunction={resetFiltredNames}
+                        />
                     </div>
                 </section>
             ) : (
@@ -150,7 +118,7 @@ const Main = () => {
                         <TextInput
                             placeholder="Wyszukaj po imieniu i nazwisku..."
                             handeNameSearchChange={handeNameSearchChange}
-                            handleKeypress={handleKeypress}
+                            handleKeyPress={handleKeyPress}
                         />
                     </div>
                     <div className="main__buttons-container">
@@ -185,11 +153,7 @@ const Main = () => {
                 </section>
             )}
 
-            {isLoading && (
-                <section>
-                    <Backdrop>Loading...</Backdrop>
-                </section>
-            )}
+            {isLoading && <Backdrop>Loading...</Backdrop>}
         </article>
     );
 };

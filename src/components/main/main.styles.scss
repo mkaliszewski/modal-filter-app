@@ -58,5 +58,14 @@
         width: 90%;
         @include flexBox(column, center, center);
         overflow: visible;
+
+        .main__filters-info-container {
+            width: 100%;
+            @include flexBox(column, center, center);
+
+            @include mediaQuery($tablet-sm) {
+                @include flexBox(row-reverse, space-around, center);
+            }
+        }
     }
 }

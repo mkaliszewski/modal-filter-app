@@ -108,7 +108,7 @@ const ModalMultiselect = ({
 ModalMultiselect.propTypes = {
     title: PropTypes.string.isRequired,
     options: PropTypes.arrayOf(
-        PropTypes.oneOfType(
+        PropTypes.oneOfType([
             PropTypes.string,
             PropTypes.shape({
                 id: PropTypes.number.isRequired,
@@ -117,8 +117,8 @@ ModalMultiselect.propTypes = {
                 job: PropTypes.string.isRequired,
                 agreement: PropTypes.string.isRequired,
                 locations: PropTypes.arrayOf(PropTypes.string).isRequired,
-            })
-        )
+            }),
+        ])
     ).isRequired,
     setModalRule: PropTypes.func,
     isAnyModalOpen: PropTypes.bool,

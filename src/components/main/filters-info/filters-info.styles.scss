@@ -1,0 +1,22 @@
+@import '../../../media.scss';
+
+.filters-info {
+    max-width: 70%;
+    border: 2px solid $primaryOrangeColor;
+    padding: 8px;
+    margin-bottom: 12px;
+    transition: margin-bottom 0.2s ease;
+
+    @include mediaQuery($tablet-sm) {
+        margin-bottom: 0;
+    }
+
+    .filters-info__title {
+        margin-top: 0;
+        margin-bottom: 6px;
+    }
+
+    p {
+        margin: 4px 0px;
+    }
+}

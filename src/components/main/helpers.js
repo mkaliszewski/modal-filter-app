@@ -48,3 +48,31 @@ export const EMPLOYEE_PROPTYPES = PropTypes.shape({
     agreement: PropTypes.string.isRequired,
     locations: PropTypes.arrayOf(PropTypes.string).isRequired,
 });
+
+export const SEARCH_FILTERS_PROPTYPES = PropTypes.shape({
+    date: PropTypes.shape({
+        startDate: PropTypes.oneOfType([
+            PropTypes.instanceOf(Date),
+            PropTypes.oneOf([null]),
+        ]),
+        endDate: PropTypes.oneOfType([
+            PropTypes.instanceOf(Date),
+            PropTypes.oneOf([null]),
+        ]),
+    }),
+    jobs: PropTypes.arrayOf(PropTypes.string),
+    locations: PropTypes.arrayOf(PropTypes.string),
+    agreements: PropTypes.arrayOf(PropTypes.string),
+    employees: PropTypes.arrayOf(EMPLOYEE_PROPTYPES),
+});
+
+export const formatDateToString = (fullDate) => {
+    if (fullDate instanceof Date) {
+        const day = fullDate.getDay();
+        const month = fullDate.getMonth() + 1;
+        const year = fullDate.getFullYear();
+
+        return `${day}/${month < 10 ? `0${month}` : month}/${year}`;
+    }
+    return '-';
+};

@@ -8,7 +8,7 @@ const TextInput = ({
     placeholder,
     isDropdown,
     handeNameSearchChange,
-    handleKeypress,
+    handleKeyPress,
 }) => (
     <div className={isDropdown ? 'text-input--container' : undefined}>
         {isDropdown && (
@@ -22,7 +22,7 @@ const TextInput = ({
             placeholder={placeholder}
             className={isDropdown ? 'text-input--dropdown' : 'text-input'}
             onChange={handeNameSearchChange}
-            onKeyPress={handleKeypress}
+            onKeyPress={handleKeyPress}
         />
     </div>
 );
@@ -31,13 +31,13 @@ TextInput.propTypes = {
     placeholder: PropTypes.string.isRequired,
     isDropdown: PropTypes.bool,
     handeNameSearchChange: PropTypes.func,
-    handleKeypress: PropTypes.func,
+    handleKeyPress: PropTypes.func,
 };
 
 TextInput.defaultProps = {
     isDropdown: false,
     handeNameSearchChange: () => {},
-    handleKeypress: () => {},
+    handleKeyPress: () => {},
 };
 
 export default TextInput;

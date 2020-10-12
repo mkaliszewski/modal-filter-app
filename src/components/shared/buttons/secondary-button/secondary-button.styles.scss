@@ -32,5 +32,25 @@
     &:disabled {
         background-color: $secondaryOrangeColor;
         border: none;
+        position: relative;
+
+        &:hover {
+            &::before {
+                content: 'Wybierz pracowników z listy';
+                vertical-align: middle;
+                display: inline-block;
+                width: 180px;
+                height: 24px;
+                position: absolute;
+                top: -20px;
+                left: -170px;
+                font-size: 12px;
+                padding-top: 8px;
+                background: $defaultWhiteColor;
+                color: $defaultBlackColor;
+                border: 1px solid $primaryOrangeColor;
+                border-radius: 4px;
+            }
+        }
     }
 }

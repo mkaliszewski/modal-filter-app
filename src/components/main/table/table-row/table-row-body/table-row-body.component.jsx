@@ -1,22 +1,11 @@
 import React from 'react';
 import Icon from '../../../../shared/icon/icon.component';
-import { EMPLOYEE_PROPTYPES } from '../../../helpers.js';
+import { EMPLOYEE_PROPTYPES, formatDateToString } from '../../../helpers.js';
 import { ICONS_NAMES } from '../../../../../mock-data/mock.data';
 import './table-row-body.styles.scss';
 
 const TableRowBody = ({ data }) => {
     const { name, date, job, agreement, locations } = data;
-
-    const formatDateToString = (fullDate) => {
-        if (fullDate instanceof Date) {
-            const day = fullDate.getDay();
-            const month = fullDate.getMonth() + 1;
-            const year = fullDate.getFullYear();
-
-            return `${day}/${month < 10 ? `0${month}` : month}/${year}`;
-        }
-        return '-';
-    };
 
     return (
         <tr className="table-row-body">
