@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import './navigation.styles.scss';
 import ToggleButton from './toggle-button/toggle-button.component';
 import Backdrop from '../shared/backdrop/backdrop.component';
 import Navbar from './navbar/navbar.component';
+import './navigation.styles.scss';
 
 const Navigation = () => {
     const [isNavbarOpen, setIsNavbarOpen] = useState(false);

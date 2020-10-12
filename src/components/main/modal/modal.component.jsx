@@ -73,11 +73,10 @@ const Modal = ({
 
             <div className="modal__button-container">
                 <SecondaryButton
+                    text="WYŚWIETL"
                     buttonFunction={filterElements}
                     isDisabled={!isEmployeeSelected}
-                >
-                    WYŚWIETL
-                </SecondaryButton>
+                />
             </div>
         </div>
     );

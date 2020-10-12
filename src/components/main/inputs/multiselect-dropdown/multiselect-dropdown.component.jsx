@@ -90,7 +90,7 @@ const MultiselectDropdown = ({
             >
                 <Checkbox
                     element="Wszystkie"
-                    isChecked={areOptionsEqual && filtredOptionsLength}
+                    isChecked={!!areOptionsEqual && !!filtredOptionsLength}
                 />
             </div>
 

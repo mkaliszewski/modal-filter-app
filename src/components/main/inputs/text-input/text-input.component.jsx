@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Icon from '../../../shared/icon/icon.component';
 import { ICONS_NAMES } from '../../../../mock-data/mock.data';
-
 import './text-input.styles.scss';
 
 const TextInput = ({

@@ -1,0 +1,67 @@
+@import '../../../../../media.scss';
+
+.table-row-body {
+    width: 100%;
+    vertical-align: middle;
+    display: table;
+    border-spacing: 0;
+    font-size: 14px;
+    height: 30px;
+    text-align: left;
+    cursor: pointer;
+
+    @include mediaQuery($mobile-sm) {
+        font-size: calc(0.0025 * 100vw + 13.2px);
+    }
+
+    @include mediaQuery($screen-lg) {
+        font-size: 18px;
+    }
+
+    &:nth-child(even) {
+        background-color: $thirdGreyColor;
+    }
+
+    &:hover {
+        background-color: $primaryBlueColor;
+        color: $defaultWhiteColor;
+
+        .table-row__cell--low {
+            .icon {
+                color: $defaultWhiteColor;
+            }
+        }
+    }
+
+    .table-row-body__cell--low {
+        text-align: center;
+        .icon {
+            color: $primaryBlueColor;
+            height: 30% !important;
+        }
+
+        @include mediaQuery($tablet-sm) {
+            display: none;
+        }
+    }
+
+    .table-row-body__cell--high {
+        display: none;
+
+        @include mediaQuery($tablet-sm) {
+            display: table-cell;
+        }
+    }
+
+    td {
+        width: 50%;
+        padding: 6px;
+        @include mediaQuery($tablet-sm) {
+            width: 17.5%;
+
+            &:last-child {
+                width: 30%;
+            }
+        }
+    }
+}

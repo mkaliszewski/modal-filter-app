@@ -1,6 +1,6 @@
 @import '../../../media.scss';
 
-$button-calc: calc(0.057 * 100vw + 21.76px);
+$buttonSizeLock: calc(0.057 * 100vw + 21.76px);
 
 .toggle-button {
     height: 40px;
@@ -14,7 +14,7 @@ $button-calc: calc(0.057 * 100vw + 21.76px);
     z-index: 99;
 
     @include mediaQuery($mobile-sm) {
-        height: $button-calc;
+        height: $buttonSizeLock;
     }
 
     @include mediaQuery($tablet-sm) {
@@ -35,7 +35,7 @@ $button-calc: calc(0.057 * 100vw + 21.76px);
         background-color: $primaryBlueColor;
 
         @include mediaQuery($mobile-sm) {
-            width: $button-calc;
+            width: $buttonSizeLock;
             height: calc(0.006 * 100vw + 0.08px);
         }
 

@@ -1,11 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useDatepicker } from '@datepicker-react/hooks';
-import Month from './date-picker-month/date-picker-month.component';
-import NavButton from './date-picker-nav/date-picker-nav.component';
+import PickerMonth from './date-picker-month/date-picker-month.component';
+import PickerNavButton from './date-picker-nav/date-picker-nav.component';
+import PickerHandler from './date-picker-handler/date-picker-handler.component';
 import { ICONS_NAMES } from '../../../../mock-data/mock.data';
 import DatepickerContext from './date-picker.context';
 import './date-picker.styles.scss';
+
+const MIN_MONTH = 0;
+const MAX_MONTH = 11;
 
 const DatePicker = ({
     pickerState: { startDate, endDate, focusedInput },
@@ -35,11 +39,10 @@ const DatePicker = ({
     });
 
     const currentMonth = activeMonths[0].month;
+    const currentYear = activeMonths[0].year;
+
     const validateNavigation = (month, fnc) =>
         currentMonth === month ? null : fnc;
-
-    const MIN_MONTH = 0;
-    const MAX_MONTH = 11;
 
     return (
         <DatepickerContext.Provider
@@ -57,34 +60,30 @@ const DatePicker = ({
         >
             <div className="date-picker">
                 <div className="date-picker__controls-container">
-                    <div
-                        onClick={clearDatePicker}
-                        className="date-picker__control"
-                    >
-                        Wyczyść
-                    </div>
-                    <div
-                        onClick={closeDropdown}
-                        className="date-picker__control"
-                    >
-                        Zamknij
-                    </div>
+                    <PickerHandler
+                        text="Wyczyść"
+                        clickFunction={clearDatePicker}
+                    />
+                    <PickerHandler
+                        text="Zamknij"
+                        clickFunction={closeDropdown}
+                    />
                 </div>
 
-                <Month
-                    year={2020}
+                <PickerMonth
+                    year={currentYear}
                     month={currentMonth}
                     firstDayOfWeek={firstDayOfWeek}
                 />
                 <div className="date-picker__butons-container">
-                    <NavButton
+                    <PickerNavButton
                         iconName={ICONS_NAMES.PREVIOUS}
                         onClick={validateNavigation(
                             MIN_MONTH,
                             goToPreviousMonthsByOneMonth
                         )}
                     />
-                    <NavButton
+                    <PickerNavButton
                         iconName={ICONS_NAMES.NEXT}
                         onClick={validateNavigation(
                             MAX_MONTH,

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './secondary-button.styles.scss';
 
-const SecondaryButton = ({ children, buttonFunction, isDisabled }) => {
+const SecondaryButton = ({ text, buttonFunction, isDisabled }) => {
     return (
         <button
             onClick={buttonFunction}
@@ -10,13 +10,13 @@ const SecondaryButton = ({ children, buttonFunction, isDisabled }) => {
             className="secondary-button"
             disabled={isDisabled}
         >
-            {children}
+            {text}
         </button>
     );
 };
 
 SecondaryButton.propTypes = {
-    children: PropTypes.string.isRequired,
+    text: PropTypes.string.isRequired,
     buttonFunction: PropTypes.func,
     isDisabled: PropTypes.bool,
 };

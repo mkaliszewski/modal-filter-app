@@ -20,7 +20,6 @@
     opacity: 0;
     animation: opacity-inc 500ms;
     animation-fill-mode: forwards;
-
     font-size: 32px;
     color: $defaultBlackColor;
     @include flexBox(row, center, center);

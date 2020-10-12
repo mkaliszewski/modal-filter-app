@@ -1,0 +1,17 @@
+@import '../../../../media.scss';
+
+.table-head {
+    height: 40px;
+    display: block;
+    border-bottom: 1px solid $primaryBlueColor;
+    width: 100%;
+
+    @include flexBox(row, center, center);
+
+    @include mediaQuery($mobile-sm) {
+        height: calc(0.013 * 100vw + 36px);
+    }
+    @include mediaQuery($screen-lg) {
+        height: 60px;
+    }
+}

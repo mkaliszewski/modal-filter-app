@@ -1,52 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import TableRow from './table-row/table-row.component';
+import TableHead from './table-head/table-head.component';
+import TableBody from './table-body/table-body.component';
+import TableFoot from './table-foot/table-foot.component';
 import { EMPLOYEES_HEADERS } from '../../../mock-data/mock.data';
+import { EMPLOYEE_PROPTYPES } from '../helpers';
 import './table.styles.scss';
 
 const Table = ({ data }) => {
-    const isDataValid = !!data.length;
+    const dataLength = data.length;
 
     return (
         <table className="table-custom">
-            <thead className="table-custom__thead">
-                <TableRow rowData={EMPLOYEES_HEADERS} isHeading />
-            </thead>
-            <tbody
-                className={`table-custom__tbody ${
-                    !isDataValid ? 'table-custom__body--empty' : undefined
-                }`}
-            >
-                {isDataValid ? (
-                    data.map((employee) => (
-                        <TableRow rowData={employee} key={employee.id} />
-                    ))
-                ) : (
-                    <tr>
-                        <td>Brak wyników spełniających wymagania</td>
-                    </tr>
-                )}
-            </tbody>
-            <tfoot className="table-custom__tfoot">
-                <tr>
-                    <td>Suma rekordów wynosi: {data.length}</td>
-                </tr>
-            </tfoot>
+            <TableHead data={EMPLOYEES_HEADERS} />
+            <TableBody data={data} isValid={!!dataLength} />
+            <TableFoot recordsNumber={dataLength} />
         </table>
     );
 };
 
 Table.propTypes = {
-    data: PropTypes.arrayOf(
-        PropTypes.shape({
-            id: PropTypes.number.isRequired,
-            name: PropTypes.string.isRequired,
-            date: PropTypes.instanceOf(Date).isRequired,
-            job: PropTypes.string.isRequired,
-            agreement: PropTypes.string.isRequired,
-            locations: PropTypes.arrayOf(PropTypes.string).isRequired,
-        })
-    ),
+    data: PropTypes.arrayOf(EMPLOYEE_PROPTYPES),
 };
 
 Table.defaultProps = {

@@ -51,15 +51,4 @@
             @include flexBox(row, center, center);
         }
     }
-
-    .table-custom__tfoot {
-        height: 40px;
-        width: inherit;
-        @include flexBox(row, center, center);
-
-        @include mediaQuery($tablet-sm) {
-            justify-content: flex-end;
-            padding-right: 6px;
-        }
-    }
 }

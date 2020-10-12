@@ -12,11 +12,13 @@
                 "extensions": [".js", ".jsx"]
             }
         ],
+
         "indent": ["off", 4],
-        "import/prefer-default-export": "off",
         "jsx-a11y/click-events-have-key-events": "off",
         "jsx-a11y/no-static-element-interactions": "off",
         "react/jsx-props-no-spreading": "off",
-        "no-plusplus": "off"
+        "no-plusplus": "off",
+        "import/no-named-as-default": "off",
+        "react/no-array-index-key": "off"
     }
 }

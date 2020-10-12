@@ -1,6 +1,4 @@
 @import '../../../media.scss';
-@mixin iconSort {
-}
 
 .icon {
     font-size: 2em;
@@ -12,20 +10,23 @@
     }
 }
 
-.icon--search {
-    color: $defaultBlackColor;
+.icon--search,
+.icon--sort,
+.icon--calendar {
     font-size: 1.2em;
-    transform: scaleX(-1);
 }
 
+.icon--search,
 .icon--sort {
     color: $defaultBlackColor;
-    font-size: 1.2em;
+}
+
+.icon--search {
+    transform: scaleX(-1);
 }
 
 .icon--calendar {
     color: $primaryGreyColor;
-    font-size: 1.2em;
 }
 
 .icon--next,

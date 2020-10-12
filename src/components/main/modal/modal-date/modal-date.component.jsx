@@ -59,7 +59,7 @@ const ModalDate = ({ setModalRule, isAnyModalOpen, updateFilterValues }) => {
     };
 
     const inputValue = startDate
-        ? `${transformDate(startDate)}-${transformDate(endDate)}`
+        ? `${transformDate(startDate)} - ${transformDate(endDate)}`
         : 'Wybierz';
 
     const canDropdownBeClosed =

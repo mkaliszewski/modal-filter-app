@@ -123,19 +123,20 @@ const Main = () => {
             {isTableVisible ? (
                 <section className="main__section-middle">
                     <Table data={tableData} />
-                    <PrimaryButton buttonFunction={resetFiltredNames}>
-                        PONÓW
-                    </PrimaryButton>
+                    <PrimaryButton
+                        text="PONÓW"
+                        buttonFunction={resetFiltredNames}
+                    />
                     <div>
                         Użyto następujących filtrów:
                         <br />
                         Data początkowa:
                         {transformDate(searchFilters.date.startDate)} <br />
-                        Data końcowa:{' '}
+                        Data końcowa:
                         {transformDate(searchFilters.date.endDate)} <br />
                         Stanowiska: {displayFilterValues(searchFilters.jobs)}
                         <br />
-                        Lokalizacje:{' '}
+                        Lokalizacje:
                         {displayFilterValues(searchFilters.locations)}
                         <br />
                         Typ zatrudnienia:
@@ -153,12 +154,14 @@ const Main = () => {
                         />
                     </div>
                     <div className="main__buttons-container">
-                        <PrimaryButton buttonFunction={displayTable}>
-                            SZUKAJ
-                        </PrimaryButton>
-                        <PrimaryButton buttonFunction={startFilters}>
-                            FILTRUJ
-                        </PrimaryButton>
+                        <PrimaryButton
+                            text="SZUKAJ"
+                            buttonFunction={displayTable}
+                        />
+                        <PrimaryButton
+                            text="FILTRUJ"
+                            buttonFunction={startFilters}
+                        />
                     </div>
                 </section>
             )}

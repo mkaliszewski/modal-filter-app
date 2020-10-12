@@ -45,6 +45,46 @@ export const EMPLOYEES_HEADERS = [
     'Lokalizacje',
 ];
 
+export const INITIAL_FILTERS = {
+    date: {
+        startDate: null,
+        endDate: null,
+    },
+    jobs: [],
+    locations: [],
+    agreements: [],
+    employees: [],
+};
+
+export const JOB_FILTERS = {
+    date: {
+        startDate: null,
+        endDate: null,
+    },
+    jobs: [],
+    locations: [],
+    agreements: [],
+};
+
+export const NAVIGATION_ICONS = [
+    {
+        ICON_NAME: 'book',
+        TEXT: 'Pracownicy',
+    },
+    {
+        ICON_NAME: 'chart',
+        TEXT: 'Analiza',
+    },
+    {
+        ICON_NAME: 'phone',
+        TEXT: 'Kontakty',
+    },
+    {
+        ICON_NAME: 'envelope',
+        TEXT: 'Wiadomości',
+    },
+];
+
 export const EMPLOYEES = [
     {
         id: 1,
@@ -239,43 +279,3 @@ export const EMPLOYEES = [
         locations: [LOCATIONS.ARKADY, LOCATIONS.PASAZ, LOCATIONS.BIELANY],
     },
 ];
-
-export const MODAL_CONTENT = [
-    {
-        title: 'Stanowiska',
-        options: Object.values(JOB_TYPES),
-    },
-    {
-        title: 'Lokalizacje',
-        options: Object.values(LOCATIONS),
-    },
-    {
-        title: 'Pracownicy',
-        options: EMPLOYEES,
-    },
-    {
-        title: 'Warunki zatrudnienia',
-        options: Object.values(AGREEMENT_TYPES),
-    },
-];
-
-export const INITIAL_FILTERS = {
-    date: {
-        startDate: null,
-        endDate: null,
-    },
-    jobs: [],
-    locations: [],
-    agreements: [],
-    employees: [],
-};
-
-export const JOB_FILTERS = {
-    date: {
-        startDate: null,
-        endDate: null,
-    },
-    jobs: [],
-    locations: [],
-    agreements: [],
-};

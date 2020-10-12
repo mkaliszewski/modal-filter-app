@@ -1,8 +1,8 @@
 import React from 'react';
-import './navbar.styles.scss';
 import PropTypes from 'prop-types';
 import Icon from '../../shared/icon/icon.component';
-import { NAVIGATION_ICONS } from '../navigation-icons.data';
+import { NAVIGATION_ICONS } from '../../../mock-data/mock.data';
+import './navbar.styles.scss';
 
 const Navbar = ({ isNavbarOpen }) => (
     <nav className={`navbar ${isNavbarOpen && 'navbar--open'}`}>

@@ -30,8 +30,8 @@ const Icon = ({ iconName, customCSSClass }) => {
         PREVIOUS,
     } = ICONS_NAMES;
 
-    const getIcon = (iconType) => {
-        switch (iconType) {
+    const getIcon = (icon) => {
+        switch (icon) {
             case BOOK:
                 return faAddressBook;
             case CHART:

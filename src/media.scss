@@ -34,21 +34,9 @@ $screen-lg: 1920px;
     align-items: $alignItems;
 }
 
-//font-sizes
-$font_xs: 8px;
-$font_sm: 16px;
-$font_md: 24px;
-$font_md-custom: 28px;
-$font_lg: 32px;
-$font_xl: 48px;
-$font_xl-custom: 52px;
-$font_xxl: 64px;
-$font_xxxl: 95px;
-$font_heading_sm: 54px;
-$font_heading_lg: 124px;
-
 //colors
 $primaryOrangeColor: #ff6b01;
+$secondaryOrangeColor: #ffac70;
 $primaryBlueColor: #2f4858;
 $primaryGreyColor: #b8b8b8;
 $secondaryGreyColor: #c9c9c9;
@@ -62,4 +50,3 @@ $backdropBackgroundColor: #0000001a;
 //values
 
 $navbarWidth: 125px;
-//gradient & shadow

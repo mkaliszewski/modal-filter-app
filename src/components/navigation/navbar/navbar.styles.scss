@@ -23,13 +23,14 @@
     }
 
     .navbar__list {
-        height: 70%;
+        height: 40%;
         @include flexBox(column, space-around, center);
         list-style: none;
         padding: 0 12px;
+        transition: height 0.2s ease;
 
         @include mediaQuery($tablet-sm) {
-            height: 60%;
+            height: 50%;
         }
 
         .navbar__item {
@@ -44,12 +45,7 @@
                 height: 100%;
             }
 
-            &:first-child {
-                .icon {
-                    color: $primaryOrangeColor;
-                }
-            }
-
+            &:first-child,
             &:hover {
                 .icon {
                     color: $primaryOrangeColor;

@@ -13,7 +13,7 @@ const COLORS = {
     SECONDARY_ORANGE: '#ffac71',
 };
 
-const Day = ({ dayLabel, date }) => {
+const PickerDay = ({ dayLabel, date }) => {
     const contextValues = useContext(DatepickerContext);
     const { isSelected, isSelectedStartOrEnd, onClick } = useDay({
         date,
@@ -51,13 +51,13 @@ const Day = ({ dayLabel, date }) => {
     );
 };
 
-Day.propTypes = {
+PickerDay.propTypes = {
     dayLabel: PropTypes.string,
     date: PropTypes.instanceOf(Date).isRequired,
 };
 
-Day.defaultProps = {
+PickerDay.defaultProps = {
     dayLabel: '',
 };
 
-export default Day;
+export default PickerDay;

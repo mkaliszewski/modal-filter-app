@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 export const filterName = (searchName, arr) =>
     arr.filter((element) => {
         const elementName = element?.name ? element.name : element;
@@ -37,3 +39,12 @@ export const filterThroughFilters = (filters, arr) => {
         .filter(filterLocations)
         .filter(filterAgreements);
 };
+
+export const EMPLOYEE_PROPTYPES = PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    date: PropTypes.instanceOf(Date).isRequired,
+    job: PropTypes.string.isRequired,
+    agreement: PropTypes.string.isRequired,
+    locations: PropTypes.arrayOf(PropTypes.string).isRequired,
+});

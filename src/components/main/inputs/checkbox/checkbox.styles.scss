@@ -5,8 +5,13 @@
     align-items: center;
     width: 100%;
 
+    &:focus {
+        outline: none;
+    }
+
     .checkbox__label {
         display: flex;
+        user-select: none;
         cursor: pointer;
         &::before {
             content: '';
