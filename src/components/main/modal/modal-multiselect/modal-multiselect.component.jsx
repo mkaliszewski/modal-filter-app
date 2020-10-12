@@ -44,9 +44,12 @@ const ModalMultiselect = ({
     const isSelectedOptionInFiltredRecords = selectedOptions.every((val) =>
         filtredRecords.includes(val)
     );
+    const shouldSelectedOptionsBeCleared =
+        isEmployeesMultiselect &&
+        (areFiltersEmpty || !isSelectedOptionInFiltredRecords);
 
     const validateEmployees = () => {
-        if (areFiltersEmpty || !isSelectedOptionInFiltredRecords) {
+        if (shouldSelectedOptionsBeCleared) {
             setSelectedOptions([]);
             return 'Wybierz';
         }
@@ -59,10 +62,7 @@ const ModalMultiselect = ({
         const selectedOptionsLength = selectedOptions.length;
 
         if (selectedOptionsLength) {
-            if (isEmployeesMultiselect) {
-                validateEmployees();
-            }
-
+            validateEmployees();
             const firstOption = getOptionName(selectedOptions[0]);
             const validWidthMultipleOptions = `${firstOption}  +${
                 selectedOptionsLength - 1

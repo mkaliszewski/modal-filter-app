@@ -27,12 +27,15 @@ const MultiselectDropdown = ({
         setSearchValue(value);
     };
 
+    const shouldFiltredOptionsBeCleared =
+        isEmployeesMultiselect && areFiltersEmpty;
+
     useEffect(() => {
-        if (isEmployeesMultiselect && areFiltersEmpty) {
-            setFiltredOptions([]);
-        } else {
-            setFiltredOptions(filterName(searchValue, options));
-        }
+        setFiltredOptions(
+            shouldFiltredOptionsBeCleared
+                ? []
+                : filterName(searchValue, options)
+        );
     }, [searchValue, areFiltersEmpty]);
 
     const numberOfElements = options.length;
@@ -47,23 +50,20 @@ const MultiselectDropdown = ({
         JSON.stringify(filtredOptions) === JSON.stringify(selectedOptions);
 
     const handleAllOptionsSelect = () =>
-        areOptionsEqual
-            ? setSelectedOptions([])
-            : setSelectedOptions(filtredOptions);
+        setSelectedOptions(areOptionsEqual ? [] : filtredOptions);
 
     const handleSingleOptionSelect = (el) => {
         const index = selectedOptions.indexOf(el);
+        const isInArray = index > -1;
+        const updatedOptions = [...selectedOptions];
 
-        if (index > -1) {
-            const updatedOptions = [...selectedOptions];
+        if (isInArray) {
             updatedOptions.splice(index, 1);
-
-            setSelectedOptions(updatedOptions);
         } else {
-            const updatedOptions = [...selectedOptions, el];
-
-            setSelectedOptions(updatedOptions);
+            updatedOptions.push(el);
         }
+
+        setSelectedOptions(updatedOptions);
     };
 
     return (

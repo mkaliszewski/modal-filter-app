@@ -6,14 +6,14 @@ import './checkbox.styles.scss';
 const Checkbox = ({ element, isChecked }) => {
     const elementName = typeof element === 'string' ? element : element.name;
 
-    const toggleCheckbox = (event) => {
+    const preventDefault = (event) => {
         event.preventDefault();
     };
 
     return (
         <div
             className="checkbox"
-            onClick={(event) => toggleCheckbox(event)}
+            onClick={(event) => preventDefault(event)}
             role="button"
             tabIndex={0}
         >
