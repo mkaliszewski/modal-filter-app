@@ -17,6 +17,7 @@ const Main = () => {
     const [isFiltersModalOpen, setIsFiltersModalOpen] = useState(false);
     const [isTableVisible, setIsTableVisible] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
+    const [isFiltersInfoOpen, setIsFiltersInfoOpen] = useState(false);
     const [nameSearchValue, setNameSearchValue] = useState('');
     const [searchFilters, setSearchFilters] = useState(INITIAL_FILTERS);
     const [filtredRecords, setFiltredRecords] = useState([]);
@@ -91,6 +92,16 @@ const Main = () => {
     const areFiltersEmpty =
         JSON.stringify(basicFilters) === JSON.stringify(JOB_FILTERS);
 
+    // filters info handler
+
+    const openFilterInfo = () => {
+        setIsFiltersInfoOpen(true);
+    };
+
+    const closeFilterInfo = () => {
+        setIsFiltersInfoOpen(false);
+    };
+
     // reset handler
 
     const resetToInitialState = () => {
@@ -104,13 +115,24 @@ const Main = () => {
     return (
         <article className="main">
             {isTableVisible ? (
-                <section className="main__section-table">
+                <section
+                    onClick={isFiltersInfoOpen ? closeFilterInfo : null}
+                    className="main__section-table"
+                >
                     <Table data={tableData} />
                     <div className="main__filters-info-container">
-                        <FiltersInfo searchFilters={searchFilters} />
+                        <FiltersInfo
+                            searchFilters={searchFilters}
+                            isOpen={isFiltersInfoOpen}
+                        />
                         <PrimaryButton
                             text="PONÓW"
                             buttonFunction={resetToInitialState}
+                        />
+                        <PrimaryButton
+                            text="FILTRY"
+                            buttonFunction={openFilterInfo}
+                            customCSSClass="primary-button--filters"
                         />
                     </div>
                 </section>

@@ -1,8 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { formatDateToString, SEARCH_FILTERS_PROPTYPES } from '../helpers';
 import './filters-info.styles.scss';
 
-const FiltersInfo = ({ searchFilters }) => {
+const FiltersInfo = ({ searchFilters, isOpen }) => {
     const {
         date: { startDate, endDate },
         jobs,
@@ -20,7 +21,11 @@ const FiltersInfo = ({ searchFilters }) => {
     };
 
     return (
-        <div className="filters-info">
+        <div
+            className={`filters-info filters-info--${
+                isOpen ? 'open' : 'closed'
+            }`}
+        >
             <p className="filters-info__title">Użyto następujących filtrów:</p>
             <p>
                 <strong>Data początkowa</strong>:{' '}
@@ -45,6 +50,7 @@ const FiltersInfo = ({ searchFilters }) => {
 
 FiltersInfo.propTypes = {
     searchFilters: SEARCH_FILTERS_PROPTYPES.isRequired,
+    isOpen: PropTypes.bool.isRequired,
 };
 
 export default FiltersInfo;

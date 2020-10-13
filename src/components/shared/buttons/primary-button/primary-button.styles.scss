@@ -41,4 +41,10 @@
         border: 3px solid $primaryOrangeColor;
         font-weight: bold;
     }
+
+    &.primary-button--filters {
+        @include mediaQuery($tablet-sm) {
+            display: none;
+        }
+    }
 }

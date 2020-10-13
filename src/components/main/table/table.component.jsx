@@ -11,7 +11,7 @@ const Table = ({ data }) => {
     const dataLength = data.length;
 
     return (
-        <table className="table-custom">
+        <table className="table">
             <TableHead data={EMPLOYEES_HEADERS} />
             <TableBody data={data} isValid={!!dataLength} />
             <TableFoot recordsNumber={dataLength} />

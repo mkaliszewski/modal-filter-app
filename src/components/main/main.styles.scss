@@ -48,6 +48,7 @@
             @include flexBox(row, space-between, center);
         }
     }
+
     .main__section-table {
         margin-top: 0vh;
         height: 100%;
@@ -57,7 +58,8 @@
 
         .main__filters-info-container {
             width: 100%;
-            @include flexBox(column, center, center);
+            position: relative;
+            @include flexBox(row, space-around, center);
 
             @include mediaQuery($tablet-sm) {
                 @include flexBox(row-reverse, space-around, center);

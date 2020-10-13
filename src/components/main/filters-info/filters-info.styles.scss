@@ -6,14 +6,23 @@
     padding: 8px;
     margin-bottom: 12px;
     transition: margin-bottom 0.2s ease;
+    position: absolute;
+    background: $defaultWhiteColor;
+    bottom: 15px;
+    left: -5px;
+
+    &.filters-info--closed {
+        display: none;
+
+        @include mediaQuery($tablet-sm) {
+            display: block;
+        }
+    }
 
     @include mediaQuery($tablet-sm) {
         margin-bottom: 0;
+        position: initial;
     }
-
-    // @media (max-width: 414px) and (max-width: 736px) {
-    //     display: none;
-    // }
 
     .filters-info__title {
         margin-top: 0;
