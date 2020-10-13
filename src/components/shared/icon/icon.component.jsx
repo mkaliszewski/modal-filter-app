@@ -16,6 +16,25 @@ import {
 import { ICONS_NAMES } from '../../../mock-data/mock.data';
 import './icon.styles.scss';
 
+/**
+ * Component used as selectable icon
+ *
+ * @param {string} iconName icon name used to select icon displayed in component
+ * @param {boolean} customCSSClass custom styling class
+ *
+ * @return  {FC} Icon component
+ *
+ * @component
+ * @example
+ * const iconName = 'book'
+ * const customCSSClass = 'custom-class'
+ *
+ * return (
+ *    <Icon iconName={iconName} customCSSClass={customCSSClass} />
+ * )
+ *
+ */
+
 const Icon = ({ iconName, customCSSClass }) => {
     const {
         BOOK,
@@ -61,6 +80,7 @@ const Icon = ({ iconName, customCSSClass }) => {
         <FontAwesomeIcon
             icon={getIcon(iconName)}
             className={customCSSClass ? `icon--${customCSSClass}` : 'icon'}
+            role="presentation"
         />
     );
 };

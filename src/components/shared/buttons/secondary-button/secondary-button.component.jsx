@@ -2,6 +2,27 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './secondary-button.styles.scss';
 
+/**
+ * Component used as secondary button
+ *
+ * @param {string} text text rendered inside button
+ * @param {function} buttonFunction function to be called on button click
+ * @param {boolean} isDisabled defines weather button is disabled or not
+ *
+ * @return  {FC} SecondaryButton component
+ *
+ * @component
+ * @example
+ * const text = 'Filter'
+ * const buttonFunction = () => {}
+ * const isDisabled = false
+ *
+ * return (
+ *    <SecondaryButton text={text} buttonFunction={buttonFunction} isDisabled={isDisabled} />
+ * )
+ *
+ */
+
 const SecondaryButton = ({ text, buttonFunction, isDisabled }) => {
     return (
         <button
