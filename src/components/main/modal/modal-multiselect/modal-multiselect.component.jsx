@@ -8,6 +8,46 @@ import './modal-multiselect.styles.scss';
 
 const MAX_WINDOW_WIDTH = 500;
 
+/**
+ * Component used as modal element with dropdown
+ *
+ * @param {string} title title of label
+ * @param {Array} options array of avaliable options
+ * @param {function} handleModalRuleChange function to handle modal behavior
+ * @param {boolean} isAnyModalOpen informs if any other modal is opened
+ * @param {function} updateFilterValues function used to update values of filters
+ * @param {string} filterKey key of filter
+ * @param {boolean} areFiltersEmpty informs if filters are empty
+ * @param {Object[]} filtredRecords array of filtred records
+ *
+ * @return  {FC} ModalMultiselect component
+ *
+ * @component
+ * @example
+ * const title = 'Some title'
+ * const options = []
+ * const handleModalRuleChange = () => {}
+ * const isAnyModalOpen = false
+ * const updateFilterValues = () => {}
+ * const filterKey = 'jobs'
+ * const areFiltersEmpty = false
+ * const filtredRecords = []
+ *
+ * return (
+ *    <ModalMultiselect
+ *      title={title}
+ *      options={options}
+ *      handleModalRuleChange={handleModalRuleChange}
+ *      isAnyModalOpen={isAnyModalOpen}
+ *      updateFilterValues={updateFilterValues}
+ *      filterKey={filterKey}
+ *      areFiltersEmpty={areFiltersEmpty}
+ *      filtredRecords={filtredRecords}
+ *    />
+ * )
+ *
+ */
+
 const ModalMultiselect = ({
     title,
     options,
@@ -99,7 +139,10 @@ const ModalMultiselect = ({
             >
                 <span className="modal-multiselect__description">{title}</span>
                 <div className="modal-multiselect__value-container">
-                    <div className="modal-multiselect__value">
+                    <div
+                        className="modal-multiselect__value"
+                        data-testid="multiselect-value"
+                    >
                         {getInputValue()}
                     </div>
                     <Icon

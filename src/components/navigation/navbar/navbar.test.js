@@ -33,7 +33,7 @@ describe('Navbar', () => {
         expect(navbar).not.toHaveClass(expectedOpenClass);
     });
 
-    describe('has icon with navigation element:', () => {
+    describe('has icon with navigation element: ', () => {
         const testData = NAVIGATION_ICONS.map((item) => item.TEXT);
         const iconRole = 'presentation';
 

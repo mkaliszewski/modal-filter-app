@@ -1,4 +1,4 @@
-import React from 'react';
+import { createContext } from 'react';
 
 export const datepickerContextDefaultValue = {
     focusedDate: null,
@@ -12,4 +12,4 @@ export const datepickerContextDefaultValue = {
     onDateSelect: () => {},
 };
 
-export default React.createContext(datepickerContextDefaultValue);
+export default createContext(datepickerContextDefaultValue);

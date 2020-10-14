@@ -7,7 +7,7 @@ import './secondary-button.styles.scss';
  *
  * @param {string} text text rendered inside button
  * @param {function} buttonFunction function to be called on button click
- * @param {boolean} isDisabled defines weather button is disabled or not
+ * @param {boolean} isDisabled defines whether button is disabled or not
  *
  * @return  {FC} SecondaryButton component
  *

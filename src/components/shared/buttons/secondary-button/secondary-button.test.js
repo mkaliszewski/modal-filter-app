@@ -50,8 +50,8 @@ describe('SecondaryButton', () => {
     });
 
     it('is enabled while isDisabled prop is false', () => {
-        const updatedProps = { ...defaultProps, isDisabled: true };
-        const { getByText } = renderSecondaryButton(updatedProps);
+        const customProps = { ...defaultProps, isDisabled: true };
+        const { getByText } = renderSecondaryButton(customProps);
         const button = getByText(text);
 
         expect(button).toBeDisabled();

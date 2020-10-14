@@ -12,6 +12,31 @@ const INITIAL_PICKER_STATE = {
     focusedInput: START_DATE,
 };
 
+/**
+ * Component used as modal element with date picker dropdown
+ *
+ * @param {function} handleModalRuleChange function to handle modal behavior
+ * @param {boolean} isAnyModalOpen informs if any other modal is opened
+ * @param {function} updateFilterValues function used to update values of filters
+ *
+ * @return  {FC} ModalDate component
+ *
+ * @component
+ * @example
+ * const handleModalRuleChange = () => {}
+ * const isAnyModalOpen = false
+ * const updateFilterValues = () => {}
+ *
+ * return (
+ *    <ModalDate
+ *      handleModalRuleChange={handleModalRuleChange}
+ *      isAnyModalOpen={isAnyModalOpen}
+ *      updateFilterValues={updateFilterValues}
+ *    />
+ * )
+ *
+ */
+
 const ModalDate = ({
     handleModalRuleChange,
     isAnyModalOpen,
@@ -85,6 +110,8 @@ const ModalDate = ({
                         ? handleDropdownClose
                         : handleDropdownOpen
                 }
+                role="button"
+                tabIndex={0}
             >
                 <Icon
                     iconName={ICONS_NAMES.CALENDAR}
@@ -93,7 +120,12 @@ const ModalDate = ({
 
                 <div className="modal-date__value-container">
                     <span className="modal-date__description">Okres</span>
-                    <div className="modal-date__value">{inputValue}</div>
+                    <div
+                        className="modal-date__value"
+                        data-testid="modal-date-value"
+                    >
+                        {inputValue}
+                    </div>
                 </div>
             </div>
 

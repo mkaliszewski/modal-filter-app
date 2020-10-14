@@ -27,14 +27,14 @@ describe('Icon', () => {
     });
 
     it('has received custom css class', () => {
-        const expectedCustomClass = `icon--${customCSSClass}`;
         const { getByRole } = renderIcon();
         const icon = getByRole(iconRole, { hidden: true });
+        const expectedCustomClass = `icon--${customCSSClass}`;
 
         expect(icon).toHaveClass(expectedCustomClass);
     });
 
-    describe('renders icon based on icon name:', () => {
+    describe('renders icon based on icon name: ', () => {
         const testData = [
             {
                 testIconName: 'book',

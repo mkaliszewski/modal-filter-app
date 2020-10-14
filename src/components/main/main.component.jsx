@@ -13,6 +13,20 @@ import {
 import { filterName, filterThroughFilters } from './helpers';
 import './main.styles.scss';
 
+/**
+ * Component used as main section of application with searchers, modal and results table
+ *
+ * @return  {FC} Main component
+ *
+ * @component
+ * @example
+ *
+ * return (
+ *    <Main />
+ * )
+ *
+ */
+
 const Main = () => {
     const [isFiltersModalOpen, setIsFiltersModalOpen] = useState(false);
     const [isTableVisible, setIsTableVisible] = useState(false);
@@ -114,7 +128,27 @@ const Main = () => {
 
     return (
         <article className="main">
-            {isTableVisible ? (
+            {!isTableVisible ? (
+                <section className="main__section-search">
+                    <div className="main__input-container">
+                        <TextInput
+                            placeholder="Wyszukaj po imieniu i nazwisku..."
+                            handeNameSearchChange={handeNameSearchChange}
+                            handleKeyPress={handleNameSearchKeyPress}
+                        />
+                    </div>
+                    <div className="main__buttons-container">
+                        <PrimaryButton
+                            text="SZUKAJ"
+                            buttonFunction={displayTable}
+                        />
+                        <PrimaryButton
+                            text="FILTRUJ"
+                            buttonFunction={startFilters}
+                        />
+                    </div>
+                </section>
+            ) : (
                 <section
                     onClick={isFiltersInfoOpen ? closeFilterInfo : null}
                     className="main__section-table"
@@ -136,26 +170,6 @@ const Main = () => {
                         />
                     </div>
                 </section>
-            ) : (
-                <section className="main__section-search">
-                    <div className="main__input-container">
-                        <TextInput
-                            placeholder="Wyszukaj po imieniu i nazwisku..."
-                            handeNameSearchChange={handeNameSearchChange}
-                            handleKeyPress={handleNameSearchKeyPress}
-                        />
-                    </div>
-                    <div className="main__buttons-container">
-                        <PrimaryButton
-                            text="SZUKAJ"
-                            buttonFunction={displayTable}
-                        />
-                        <PrimaryButton
-                            text="FILTRUJ"
-                            buttonFunction={startFilters}
-                        />
-                    </div>
-                </section>
             )}
 
             {isFiltersModalOpen && (
@@ -172,7 +186,7 @@ const Main = () => {
                 </section>
             )}
 
-            {isLoading && <Backdrop>Loading...</Backdrop>}
+            {isLoading && <Backdrop>Wczytywanie...</Backdrop>}
         </article>
     );
 };

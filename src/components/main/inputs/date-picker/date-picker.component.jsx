@@ -11,6 +11,36 @@ import './date-picker.styles.scss';
 const MIN_MONTH = 0;
 const MAX_MONTH = 11;
 
+/**
+ * Component used as date picker
+ *
+ * @param {Object} pickerState picker state
+ * @param {date} pickerState.startDate picker start date
+ * @param {date} pickerState.endDate picker end date
+ * @param {string} pickerState focusedInput picker focused input
+ * @param {function} handleDateChange function used to handle date change
+ * @param {function} closeDropdown function used to close dropdown in which picker is used
+ * @param {function} clearDatePicker function used to clear picker state
+ *
+ * @return  {FC} DatePicker component
+ *
+ * @component
+ * @example
+ * const pickerState = {
+ *                  startDate: new Date(),
+ *                  endDate: new Date(),
+ *                  focusedInput: 'startDate'
+ *                  }
+ * const handleDateChange = () => {}
+ * const closeDropdown = () => {}
+ * const clearDatePicker = () => {}
+ *
+ * return (
+ *    <DatePicker pickerState={pickerState} handleDateChange={handleDateChange} closeDropdown={closeDropdown} clearDatePicker={clearDatePicker} />
+ * )
+ *
+ */
+
 const DatePicker = ({
     pickerState: { startDate, endDate, focusedInput },
     handleDateChange,

@@ -4,6 +4,29 @@ import Icon from '../../../shared/icon/icon.component';
 import { ICONS_NAMES } from '../../../../mock-data/mock.data';
 import './text-input.styles.scss';
 
+/**
+ * Component used as text input
+ *
+ * @param {string} placeholder placeholder used in text input
+ * @param {boolean} isDropdown informs if text input is used in dropdown
+ * @param {function} handeNameSearchChange function used to handle input text change
+ * @param {function} handleKeyPress function used to handle enter key press on input focus
+ *
+ * @return  {FC} TextInput component
+ *
+ * @component
+ * @example
+ * const placeholder = 'Please type something...'
+ * const isDropdown = false
+ * const handeNameSearchChange = () => {}
+ * const handleKeyPress = () => {}
+ *
+ * return (
+ *    <TextInput placeholder={placeholder} isDropdown={isDropdown} handeNameSearchChange={handeNameSearchChange} handleKeyPress={handleKeyPress}/>
+ * )
+ *
+ */
+
 const TextInput = ({
     placeholder,
     isDropdown,

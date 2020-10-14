@@ -13,6 +13,25 @@ const COLORS = {
     SECONDARY_ORANGE: '#ffac71',
 };
 
+/**
+ * Component used as single day element in date picker
+ *
+ * @param {string} dayLabel single day label
+ * @param {boolean} date full date associated with single day
+ *
+ * @return  {FC} PickerDay component
+ *
+ * @component
+ * @example
+ * const dayLabel = '5'
+ * const date = false
+ *
+ * return (
+ *    <PickerDay dayLabel={dayLabel} date={date} />
+ * )
+ *
+ */
+
 const PickerDay = ({ dayLabel, date }) => {
     const contextValues = useContext(DatepickerContext);
     const { isSelected, isSelectedStartOrEnd, onClick } = useDay({
@@ -45,7 +64,7 @@ const PickerDay = ({ dayLabel, date }) => {
                     {dayLabel}
                 </button>
             ) : (
-                <div />
+                <div role="presentation" />
             )}
         </>
     );

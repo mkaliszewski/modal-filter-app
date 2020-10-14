@@ -2,6 +2,23 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './table-row-head.styles.scss';
 
+/**
+ * Component used as table row used in table head
+ *
+ * @param {String[]} data array of strings displayed as table headings
+ *
+ * @return  {FC} TableRowHead component
+ *
+ * @component
+ * @example
+ * const data = ['headingOne', 'headingTwo']
+ *
+ * return (
+ *    <TableRowHead data={data} />
+ * )
+ *
+ */
+
 const TableRowHead = ({ data }) => (
     <tr className="table-row-head">
         <>

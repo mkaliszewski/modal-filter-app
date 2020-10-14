@@ -11,6 +11,53 @@ const MAX_EEMENT_NUM = 4;
 const OFFSET = 1;
 const MAX_LIST_HEIGHT = ELEMENT_HEIGHT * MAX_EEMENT_NUM + OFFSET;
 
+/**
+ * Component used as multiselect dropdown
+ *
+ * @param {String[]} selectOptions array of avaliable options
+ * @param {Object[]} filtredRecords array of object with filtred records
+ * @param {number} filtredRecords.id id associated with record
+ * @param {string} filtredRecords.name name associated with record
+ * @param {date} filtredRecords.date date associated with record
+ * @param {string} filtredRecords.job job type associated with record
+ * @param {string} filtredRecords.agreement agreement type associated with record
+ * @param {string} filtredRecords.locations locations associated with record
+ * @param {array} selectedOptions array of selected options
+ * @param {function} setSelectedOptions function used to set selected options
+ * @param {boolean} isEmployeesMultiselect informs whether it's multiselect dropdown for employee or not
+ * @param {boolean} areFiltersEmpty informs whether used filters are empty
+ *
+ * @return  {FC} MultiselectDropdown component
+ *
+ * @component
+ * @example
+ * const selectOptions = []
+ * const filtredRecords = [{
+ *                  id: 1,
+ *                  name: 'John Smith',
+ *                  date: new Date(),
+ *                  job: 'cook',
+ *                  agreement: 'pernament',
+ *                  locations: ['loc1', 'loc2']
+ *              }]
+ * const selectedOptions = []
+ * const setSelectedOptions = () => {}
+ * const isEmployeesMultiselect = false;
+ * const areFiltersEmpty = true;
+ *
+ * return (
+ *    <MultiselectDropdown
+ *      selectOptions={selectOptions}
+ *      filtredRecords={filtredRecords}
+ *      selectedOptions={selectedOptions}
+ *      setSelectedOptions={setSelectedOptions}
+ *      isEmployeesMultiselect={isEmployeesMultiselect}
+ *      areFiltersEmpty={areFiltersEmpty}
+ *    />
+ * )
+ *
+ */
+
 const MultiselectDropdown = ({
     selectOptions,
     filtredRecords,
@@ -109,7 +156,7 @@ const MultiselectDropdown = ({
                                   role="menuitem"
                               >
                                   <Checkbox
-                                      element={el}
+                                      element={elementName}
                                       isChecked={selectedOptions.includes(el)}
                                   />
                               </li>

@@ -75,6 +75,12 @@ export const formatDateToString = (fullDate) => {
     return '-';
 };
 
+export const formatStringsFromArr = (arr) => {
+    return Array.isArray(arr)
+        ? arr.map((el, index) => (index === arr.length - 1 ? el : `${el}, `))
+        : '-';
+};
+
 // proptypes
 
 export const EMPLOYEE_PROPTYPES = PropTypes.shape({

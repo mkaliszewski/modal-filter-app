@@ -7,6 +7,40 @@ import { MULTISELECTABLE_OPTIONS } from '../../../mock-data/mock.data';
 import { EMPLOYEE_PROPTYPES } from '../helpers';
 import './modal.styles.scss';
 
+/**
+ * Component used as modal with dropdown used to filter and select employees
+ *
+ * @param {function} updateFilterValues function used to update values of filters
+ * @param {function} handleTableDisplay function used to handle table display in app
+ * @param {Object[]} filtredRecords array of filtred records
+ * @param {boolean} isEmployeeSelected informs if any employee is selected from dropdown
+ * @param {boolean} areFiltersEmpty informs if filters are empty
+ * @param {function} modalCloseFunction function used to close open modal
+ *
+ * @return  {FC} Modal component
+ *
+ * @component
+ * @example
+ * const updateFilterValues = () => {}
+ * const handleTableDisplay = () => {}
+ * const filtredRecords = []
+ * const isEmployeeSelected = false
+ * const areFiltersEmpty = false
+ * const modalCloseFunction = () => {}
+ *
+ * return (
+ *    <Modal
+ *      updateFilterValues={updateFilterValues}
+ *      handleTableDisplay={handleTableDisplay}
+ *      filtredRecords={filtredRecords}
+ *      isEmployeeSelected={isEmployeeSelected}
+ *      areFiltersEmpty={areFiltersEmpty}
+ *      modalCloseFunction={modalCloseFunction}
+ *    />
+ * )
+ *
+ */
+
 const Modal = ({
     updateFilterValues,
     handleTableDisplay,

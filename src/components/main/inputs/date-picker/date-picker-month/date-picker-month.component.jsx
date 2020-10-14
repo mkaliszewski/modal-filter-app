@@ -7,6 +7,27 @@ import './date-picker-month.styles.scss';
 
 const WEEK_DAYS_LABELS = ['Pon', 'Wto', 'Śro', 'Czw', 'Pią', 'Sob', 'Nie'];
 
+/**
+ * Component used to as single month in date picker
+ *
+ * @param {number} year given year
+ * @param {number} month given month
+ * @param {number} firstDayOfWeek given first day of the week
+ *
+ * @return  {FC} PickerMonth component
+ *
+ * @component
+ * @example
+ * const year = 2020
+ * const month = 6
+ * const firstDayOfWeek = 1
+ *
+ * return (
+ *    <PickerMonth year={year} month={month} firstDayOfWeek={firstDayOfWeek} />
+ * )
+ *
+ */
+
 const PickerMonth = ({ year, month, firstDayOfWeek }) => {
     const { days, monthLabel } = useMonth({
         year,

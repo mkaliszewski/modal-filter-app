@@ -11,6 +11,7 @@ const renderNavigation = () => {
 
 describe('Navigation', () => {
     const toggleButtonRole = 'button';
+    const backdropTestId = 'backdrop';
 
     it('renders without crashing', () => {
         const { unmount } = renderNavigation();
@@ -26,15 +27,14 @@ describe('Navigation', () => {
     });
 
     it('contains navigation bar', () => {
-        const navbarRole = 'navigation';
         const { getByRole } = renderNavigation();
+        const navbarRole = 'navigation';
         const navbar = getByRole(navbarRole);
 
         expect(navbar).toBeInTheDocument();
     });
 
     it(`doesn't display backdrop by default`, () => {
-        const backdropTestId = 'backdrop';
         const { queryByTestId } = renderNavigation();
         const backdrop = queryByTestId(backdropTestId);
 
@@ -42,7 +42,6 @@ describe('Navigation', () => {
     });
 
     it(`displays backdrop after click on toggle button and hides`, () => {
-        const backdropTestId = 'backdrop';
         const { getByTestId, getByRole } = renderNavigation();
         const toggleButton = getByRole(toggleButtonRole);
 
@@ -54,7 +53,6 @@ describe('Navigation', () => {
     });
 
     it(`hides backdrop after click on it`, () => {
-        const backdropTestId = 'backdrop';
         const { getByTestId, queryByTestId, getByRole } = renderNavigation();
         const toggleButton = getByRole(toggleButtonRole);
 
